@@ -1,11 +1,17 @@
-# Handwritten derivation to photograph
+# Handwritten derivation
 
-Write the following four lines by hand, sign or initial the page, photograph it
-in good light, and save the uncropped original as:
+The original, uncropped photograph is saved as
+[`selection-derivation.png`](selection-derivation.png). The source image is not
+edited; `presentation.tex` rotates it at typesetting time so that it appears
+upright on the final slide.
 
-`hand/selection-derivation.jpg`
+The page records two checks. First, it compares the solo-production and
+delegation certainty equivalents and asks whether a lower activation threshold
+is uniquely agentic. Second, it writes the selection decomposition behind the
+event-time objection: an adoption-time project shock can enter both treatment
+and language breadth.
 
-The Beamer source will include it automatically.
+The compact four-line version of the second check is:
 
 $$
 A_{it}=1\{P_{it}\ge c_i\}

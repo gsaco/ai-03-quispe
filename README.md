@@ -122,10 +122,10 @@ machine-checks the threshold results and the selection decomposition.
 
 ## Handwritten check
 
-The required photograph belongs in `hand/selection-derivation.jpg`. The exact
-four-line derivation to reproduce is in [`hand/README.md`](hand/README.md).
-Until that original photograph is added, the short deck displays an explicit
-placeholder rather than presenting a generated image as handwritten work.
+The original photograph is stored in `hand/selection-derivation.png` and appears
+on the final slide of the short deck. The repository preserves the uncropped
+file; the Beamer source rotates it only for upright display. A brief guide to
+the two checks on the page is in [`hand/README.md`](hand/README.md).
 
 ## Repository structure
 

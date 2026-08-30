@@ -201,3 +201,18 @@ creates the same band. The empirical design does not identify causal frontier
 expansion because a contemporaneous project can jointly trigger adoption and
 language breadth, while flat pre-trends and outcome exclusions do not make
 adoption timing exogenous.
+
+---
+
+## Prompt 7 — User
+
+Add my by hand derivation to the presentation, and to the repo, then commit and
+push.
+
+## Answer 7 — Assistant
+
+The original attached photograph was added to `hand/selection-derivation.png`
+without cropping or image edits. The final slide displays it upright through a
+LaTeX rotation and retains the Lean results and verdict alongside it. The deck
+was recompiled and visually audited before the repository was committed and
+pushed to `branch1`.
