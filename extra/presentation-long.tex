@@ -1,0 +1,660 @@
+% Compatibility shims for the local hyperref/LaTeX combination.
+\providecommand\IfDocumentMetadataT[1]{}
+\providecommand\IfDocumentMetadataTF[2]{#2}
+\documentclass[aspectratio=169,9pt]{beamer}
+\newcommand{\qxdecklabel}{Quispe \& Xu (2026) · extended technical deck}
+\input{../assets/quispe-beamer.sty}
+
+\begin{document}
+
+% 1
+\begin{frame}[plain]
+  \setbeamertemplate{footline}{}
+  \vspace*{1.34cm}
+  {\fontsize{19}{22}\selectfont\bfseries Agentic Delegation and the Language Frontier\par}
+  \vspace{0.15cm}
+  {\fontsize{12.5}{15}\selectfont Model, evidence, and an identification audit\par}
+  \vspace{0.46cm}
+  {\color{QXRed}\rule{\linewidth}{0.55pt}}
+  \vspace{0.48cm}
+  {\normalsize\bfseries Gabriel Saco\par}
+  \vspace{0.06cm}
+  {\normalsize August 29, 2026\par}
+  \vspace{0.18cm}
+  {\small Universidad del Pac\'ifico\par}
+  \vspace{0.20cm}
+  {\small\color{QXMuted}Extended presentation of Quispe \& Xu (2026) · arXiv:2605.25438\par}
+  \vspace{0.10cm}
+  {\small\href{https://github.com/gsaco/ai-03-quispe/tree/branch1}{\color{QXNavy}\ttfamily github.com/gsaco/ai-03-quispe/tree/branch1}\par}
+  \vfill
+  {\scriptsize\color{QXMuted}AI Economic Modeling\hfill 26-slide technical companion\par}
+\end{frame}
+
+% 2
+\begin{frame}[t]{Roadmap and the paper's contribution}
+  \vspace{0.40cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.31\textwidth}
+      \qxredblock{1. Model}{\small Three production modes generate language-specific entry thresholds and an agent-enabled activation band.}
+    \end{column}
+    \begin{column}{0.31\textwidth}
+      \qxblueblock{2. Evidence}{\small Public GitHub adoption is paired with sharp increases in language breadth, novelty, and entropy.}
+    \end{column}
+    \begin{column}{0.31\textwidth}
+      \qxredblock{3. Audit}{\small Test whether the threshold is uniquely agentic and whether adoption timing identifies frontier expansion.}
+    \end{column}
+  \end{columns}
+  \vspace{0.42cm}
+  \qxblueblock{What is new in the paper}{%
+    \small It reframes coding AI as a change in the \alert{set of feasible production technologies},
+    links that mechanism to language portfolios, and builds a developer-month panel around the public Claude coauthor trailer.
+  }
+\end{frame}
+
+% 3
+\begin{frame}[t]{Production frontier is not a skill frontier}
+  \vspace{0.42cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Skill frontier}{%
+        \small Languages the developer can independently understand, write, debug, and maintain.
+        Expansion here is learning or human-capital accumulation.
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Production frontier}{%
+        \small Languages in which the developer can ship code using all available tools and collaborators.
+        Expansion here may occur without learning the language.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.44cm}
+  \begin{center}
+    \begin{tikzpicture}[node distance=.68cm,>=Latex]
+      \node[draw=QXDivider,fill=QXBlueBody,rounded corners,minimum width=3.1cm,minimum height=.9cm] (spec) {Specify the task};
+      \node[draw=QXDivider,fill=QXRedBody,rounded corners,minimum width=3.1cm,minimum height=.9cm,right=of spec] (execute) {Agent executes in Rust};
+      \node[draw=QXDivider,fill=QXBlueBody,rounded corners,minimum width=3.1cm,minimum height=.9cm,right=of execute] (verify) {Developer verifies};
+      \draw[->,very thick,QXNavy] (spec)--(execute);
+      \draw[->,very thick,QXNavy] (execute)--(verify);
+    \end{tikzpicture}
+  \end{center}
+  \vspace{0.18cm}
+  \qxtakeaway{The outcome is observable production in a language—not demonstrated mastery of that language.}
+\end{frame}
+
+% 4
+\begin{frame}[t]{From conversational assistance to delegation}
+  \vspace{0.42cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Generation 1: conversation}{%
+        \small
+        \begin{itemize}\itemsep0.07cm
+          \item human remains the executor;
+          \item suggestions complement language skill;
+          \item interaction is turn-by-turn;
+          \item unfamiliar languages may lack a usable foothold.
+        \end{itemize}
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Generation 2: agentic delegation}{%
+        \small
+        \begin{itemize}\itemsep0.07cm
+          \item tool performs multi-step execution;
+          \item human specifies and verifies;
+          \item capability can substitute for language skill;
+          \item residual errors create risk and review costs.
+        \end{itemize}
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.44cm}
+  \qxblueblock{Empirical event}{\small Claude Code's public release creates a setting in which delegated production can be traced through GitHub commit metadata.}
+\end{frame}
+
+% 5
+\begin{frame}[t]{Economic environment}
+  \vspace{0.34cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Unit of choice}{%
+        \small Developer $i$ receives an opportunity in language $k$ at time $t$ with value $\omega_{ikt}$.
+        The language is familiar when skill $s_{ik}$ is high and unfamiliar when it is near a lower bound.
+      }
+      \vspace{0.24cm}
+      \qxredblock{Two kinds of human capital}{%
+        \small Language-specific skill supports direct execution. General ability $a_i$ supports task decomposition, specification, and verification across languages.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Technology and costs}{%
+        \small Agent capability $A_t$ raises delegated execution. Each mode also carries execution, interaction, compute, verification, and residual-error costs.
+      }
+      \vspace{0.24cm}
+      \qxblueblock{Observable portfolio}{%
+        \small A language is active when the best available mode yields nonnegative certainty-equivalent surplus. Monthly breadth is the number of active languages.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 6
+\begin{frame}[t]{The developer chooses from a changing menu}
+  \vspace{0.38cm}
+  \qxblueblock{Mode choice}{%
+    \small
+    \[
+      m^*_{ikt}\in\arg\max_{m\in\mathcal M_g}V^m_{ikt},
+      \qquad
+      Z^g_{ikt}=\mathrm{I}(\max_{m\in\mathcal M_g}V^m_{ikt}\ge0).
+    \]
+  }
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Before agent adoption}{%
+        \small The menu is $\mathcal M_1=\{S,C\}$: solo production or conversational augmentation.
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{After agent adoption}{%
+        \small The menu becomes $\mathcal M_2=\{S,C,D\}$ by adding delegated execution.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.34cm}
+  \qxtakeaway{Adding a mode cannot shrink the static feasible set; strict expansion requires delegation to dominate at some previously inactive opportunities.}
+\end{frame}
+
+% 7
+\begin{frame}[t]{Solo production: skill lowers the entry threshold}
+  \vspace{0.38cm}
+  \qxblueblock{Certainty-equivalent surplus}{%
+    \small Write solo surplus as opportunity value minus an effective execution cost:
+    \[
+      V^S_{ikt}=\omega_{ikt}-T^S_{ik}.
+    \]
+    Greater language-specific skill lowers $T^S_{ik}$ by making implementation faster and safer.
+  }
+  \vspace{0.34cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Familiar language}{\small A low solo threshold makes a broad set of opportunities profitable even without AI.}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Unfamiliar language}{\small A high solo threshold means only exceptionally valuable projects justify learning and execution costs.}
+    \end{column}
+  \end{columns}
+  \vfill
+  {\small\color{QXMuted}The model treats opportunity value as the source of extensive-margin activation.}
+\end{frame}
+
+% 8
+\begin{frame}[t]{Conversational AI: the no-foothold assumption}
+  \vspace{0.38cm}
+  \qxredblock{Augmentation gain}{%
+    \small Conversational assistance adds a benefit proportional to language skill and subtracts an interaction cost:
+    \[
+      V^C_{ikt}=V^S_{ikt}+\gamma s_{ik}-r_C.
+    \]
+  }
+  \vspace{0.30cm}
+  \qxblueblock{Assumption 1 for unfamiliar languages}{%
+    \small At the lower skill bound, the suggestion gain does not cover interaction cost:
+    \[
+      \gamma\underline{s}-r_C\le0.
+    \]
+    Therefore conversation does not lower the pre-agent entry threshold for an unfamiliar language.
+  }
+  \vspace{0.30cm}
+  \qxtakeaway{This assumption—not the threshold algebra—is what prevents ordinary chat assistance from producing the same frontier expansion.}
+\end{frame}
+
+% 9
+\begin{frame}[t]{Delegation: execution net of verification and risk}
+  \vspace{0.34cm}
+  \qxblueblock{Delegated surplus}{%
+    \small A compact representation is
+    \[
+      V^D_{ikt}=\omega_{ikt}+\lambda A_t z(a_i)
+      -\kappa(a_i,s_{ik})-r_D-\rho_{ikt}.
+    \]
+  }
+  \vspace{0.28cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Benefits}{%
+        \small Agent capability performs execution; general ability improves specification and task decomposition.
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Costs}{%
+        \small Verification, compute, and residual-error risk can erase the execution gain, especially on difficult or high-stakes tasks.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.32cm}
+  \qxtakeaway{Delegation expands the frontier only when its net threshold falls below the best pre-agent threshold.}
+\end{frame}
+
+% 10
+\begin{frame}[t]{Three thresholds summarize the mode comparison}
+  \vspace{0.38cm}
+  \begin{center}
+    \begin{tikzpicture}[x=1cm,y=1cm]
+      \draw[very thick,QXGraphite,->] (0,0)--(11.2,0) node[right] {$\omega$};
+      \draw[very thick,QXRed] (3.0,-.16)--(3.0,.42);
+      \draw[very thick,QXNavy] (7.5,-.16)--(7.5,.42);
+      \node[below,QXRed] at (3.0,-.18) {$T^D$};
+      \node[below,QXNavy] at (7.5,-.18) {$T^S=T^1$};
+      \fill[QXRedTitle] (3.0,.08) rectangle (7.5,.34);
+      \node[above,QXRed] at (5.25,.42) {agent-only activation band};
+      \node[above,QXMuted] at (1.5,.42) {inactive};
+      \node[above,QXNavy] at (9.35,.42) {already active};
+    \end{tikzpicture}
+  \end{center}
+  \vspace{0.54cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Pre-agent threshold}{\small Under no foothold, conversation does not beat solo entry for an unfamiliar language, so $T^1=T^S$.}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Delegation threshold}{\small Agent execution matters when $T^D<T^S$ after every verification, compute, and risk cost is included.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 11
+\begin{frame}[t]{Proposition 1: menu expansion and weak frontier growth}
+  \vspace{0.40cm}
+  \qxblueblock{Pointwise result}{%
+    \small Since the post-agent menu contains every pre-agent option,
+    \[
+      \max_{m\in\{S,C,D\}}V^m_{ikt}
+      \ge \max_{m\in\{S,C\}}V^m_{ikt}.
+    \]
+    Thus an opportunity active before adoption remains feasible afterward in the static model.
+  }
+  \vspace{0.34cm}
+  \qxredblock{From opportunities to language breadth}{%
+    \small Summing activation indicators across languages gives weakly greater breadth.
+    Strict growth requires at least one language-opportunity pair for which delegation is profitable while both old modes are not.
+  }
+  \vspace{0.32cm}
+  \qxtakeaway{The proposition is a menu-expansion theorem; it does not by itself establish why the new mode is available or whether it is used in equilibrium.}
+\end{frame}
+
+% 12
+\begin{frame}[t]{Proposition 2: the activation band}
+  \vspace{0.35cm}
+  \qxredblock{Unfamiliar-language result}{%
+    \small If conversation has no foothold and delegation strictly lowers the threshold, then
+    \[
+      Z^2_{ikt}-Z^1_{ikt}
+      =\mathrm{I}(T^D_{ik}\le\omega_{ikt}<T^S_{ik}).
+    \]
+    With opportunity distribution $F$, the activation probability is
+    \[
+      F(T^S_{ik})-F(T^D_{ik}).
+    \]
+  }
+  \vspace{0.28cm}
+  \qxblueblock{All conditions doing work}{%
+    \small No conversational foothold; positive net threshold reduction; opportunity mass in the band; sufficient specification and verification ability; and a stable pool of candidate languages.
+  }
+\end{frame}
+
+% 13
+\begin{frame}[t]{Proposition 3: flow, stock, and breadth predictions}
+  \vspace{0.34cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.31\textwidth}
+      \qxblueblock{New-language flow}{%
+        \small A spike at adoption if the agent immediately activates several previously unused languages.
+      }
+    \end{column}
+    \begin{column}{0.31\textwidth}
+      \qxredblock{Active breadth}{%
+        \small A contemporaneous jump that may persist only while projects continue to use the new languages.
+      }
+    \end{column}
+    \begin{column}{0.31\textwidth}
+      \qxblueblock{Cumulative stock}{%
+        \small A permanent step because every first use remains in the observed historical portfolio.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.44cm}
+  \qxredblock{Interpretive warning}{%
+    \small Cumulative languages mechanically retain adoption-month experimentation. Persistent cumulative growth therefore does not prove continued use, mastery, or a permanent productivity effect.
+  }
+\end{frame}
+
+% 14
+\begin{frame}[t]{Heterogeneity: specialists and general ability}
+  \vspace{0.36cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Specialists}{%
+        \small Developers concentrated in few languages have more unfamiliar candidates near the old entry margin. Conditional on comparable opportunities, their first-use response should be larger.
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{General ability}{%
+        \small Higher ability improves specification and verification, reducing delegated cost and residual risk. The paper proxies ability with prior commit volume.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.38cm}
+  \qxblueblock{Why the empirical mapping is imperfect}{%
+    \small Specialization is measured from observed pre-adoption portfolios and ability from activity. Both can also proxy for project type, available time, employer, or GitHub visibility.
+  }
+\end{frame}
+
+% 15
+\begin{frame}[t]{From public trailers to a developer-month panel}
+  \vspace{0.36cm}
+  \begin{center}
+    \begin{tikzpicture}[
+      node distance=.36cm,
+      box/.style={draw=QXDivider,rounded corners,minimum height=1.0cm,text width=2.25cm,align=center,fill=QXBlueBody},
+      redbox/.style={box,fill=QXRedBody},
+      arrow/.style={->,very thick,QXNavy}
+    ]
+      \node[redbox] (commits) {7.786m Claude\\coauthored commits};
+      \node[box,right=of commits] (authors) {185,517 public\\GitHub authors};
+      \node[redbox,right=of authors] (rebuild) {3.151m commits\\reconstructed};
+      \node[box,right=of rebuild] (files) {57.2m changed\\files classified};
+      \node[redbox,right=of files] (panel) {developer-month\\language panel};
+      \draw[arrow] (commits)--(authors);
+      \draw[arrow] (authors)--(rebuild);
+      \draw[arrow] (rebuild)--(files);
+      \draw[arrow] (files)--(panel);
+    \end{tikzpicture}
+  \end{center}
+  \vspace{0.46cm}
+  \qxblueblock{Measurement scope}{%
+    \small The pipeline observes public commits and file extensions. It does not observe private repositories, non-committed experimentation, prompt content, who wrote each line, or whether the developer understood the code.
+  }
+\end{frame}
+
+% 16
+\begin{frame}[t]{Analysis sample and treatment timing}
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Final panel}{%
+        \small
+        \begin{itemize}\itemsep0.08cm
+          \item 5,346 developers;
+          \item 2,813 treated early adopters;
+          \item 2,533 later-adopter controls;
+          \item 149,688 developer-month observations;
+          \item January 2024 through April 2026.
+        \end{itemize}
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Treatment definition}{%
+        \small First public commit with Claude's coauthor trailer. Sustained adopters have at least five Claude commits. Screens remove bots and competing coding-agent signals.
+      }
+      \vspace{0.25cm}
+      \qxblueblock{Control logic}{%
+        \small At each cohort and date, not-yet-treated developers supply the counterfactual comparison.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 17
+\begin{frame}[t]{Four outcome families}
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Active languages}{\small Distinct programming languages touched by a developer during the month. Captures contemporaneous breadth.}
+      \vspace{0.22cm}
+      \qxredblock{Newly used languages}{\small Languages not previously observed for that developer since January 2024. Captures first-use flow.}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Cumulative languages}{\small Total distinct languages ever observed by that month. Captures stock, but mechanically never falls.}
+      \vspace{0.22cm}
+      \qxblueblock{Shannon entropy}{\small Dispersion of changed files across languages. Distinguishes balanced diversification from adding one token language.}
+    \end{column}
+  \end{columns}
+  \vspace{0.32cm}
+  \qxtakeaway{Repository and commit counts are diagnostic outcomes for the scale of activity, not direct measures of the language frontier.}
+\end{frame}
+
+% 18
+\begin{frame}[t]{Empirical strategy: staggered event study}
+  \vspace{0.34cm}
+  \qxblueblock{Estimator}{%
+    \small Doubly robust Callaway--Sant'Anna group-time effects compare each adoption cohort with developers who have not yet adopted. The specification uses a varying base period and one month of anticipation.
+  }
+  \vspace{0.28cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Event window}{\small Six months before through ten months after first public Claude use.}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Inference}{\small 1,000 bootstrap iterations with clustering at the developer level.}
+    \end{column}
+  \end{columns}
+  \vspace{0.34cm}
+  \qxredblock{Interpretation}{%
+    \small The estimator addresses treatment-effect heterogeneity under staggered timing. It does not make voluntary timing exogenous or absorb a project shock that arrives with adoption.
+  }
+\end{frame}
+
+% 19
+\begin{frame}[t]{What the event-study estimand requires}
+  \vspace{0.32cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Maintained conditions}{%
+        \small
+        \begin{itemize}\itemsep0.07cm
+          \item conditional parallel trends;
+          \item no unmodeled anticipation beyond one month;
+          \item stable treatment definition and no interference;
+          \item not-yet adopters remain valid controls;
+          \item outcome histories are measured comparably.
+        \end{itemize}
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Most demanding condition}{%
+        \small In the absence of Claude adoption, early adopters must not experience a coincident project, employer, or workload shock that independently changes language use.
+      }
+      \vspace{0.25cm}
+      \qxblueblock{Pre-trends}{%
+        \small Flat leads are informative about gradual divergence, but have low power and cannot detect a shock that begins exactly at adoption.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 20
+\begin{frame}[t]{Main estimates: a large adoption-month discontinuity}
+  \vspace{0.34cm}
+  \begin{center}
+    \renewcommand{\arraystretch}{1.20}
+    \begin{tabular}{lrrl}
+      \toprule
+      Outcome & Effect at $e=0$ & Standard error & Scale / interpretation \\
+      \midrule
+      Active languages & $2.528$ & $0.063$ & pre-adoption mean $0.90$ \\
+      Newly used languages & $1.193$ & $0.051$ & pre-adoption flow $0.31$ \\
+      Language entropy & $0.382$ & $0.009$ & broader file distribution \\
+      Cumulative languages & $1.604$ & --- & permanent mechanical stock \\
+      Commits & $35.08$ & --- & strong activity increase \\
+      Active repositories & $1.494$ & --- & broader project activity \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \vspace{0.34cm}
+  \qxtakeaway{The magnitudes are economically large and precisely estimated; the central question is what produces the adoption-month discontinuity.}
+\end{frame}
+
+% 21
+\begin{frame}[t]{Dynamics separate experimentation from persistence}
+  \vspace{0.30cm}
+  \begin{center}
+    \renewcommand{\arraystretch}{1.18}
+    \begin{tabular}{lrrr}
+      \toprule
+      Outcome & Adoption month & One month after & Two months after \\
+      \midrule
+      Active languages & $2.528$ & $1.227$ & $0.693$ \\
+      Newly used languages & $1.193$ & $0.126$ & approximately $0$ \\
+      Cumulative languages & $1.604$ & $1.892$ & $2.072$ \\
+      Entropy & $0.382$ & $0.189$ & $0.102$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{What persists}{\small Active breadth and entropy remain positive but decay quickly.}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{What does not}{\small The flow of first-use languages returns nearly to zero within two months.}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 22
+\begin{frame}[t]{Outcome-side robustness checks}
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Remove first-Claude language}{%
+        \small At adoption, active languages still rise by $1.58$ and newly used languages by $0.807$. The response is not only the language of the first tagged commit.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Remove all Claude commits}{%
+        \small In non-Claude-authored commits, active languages rise by $1.663$, newly used by $0.724$, and cumulative languages by $1.130$ at adoption.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.36cm}
+  \qxblueblock{Additional checks}{%
+    \small Baseline activity controls leave results similar; stricter pre-period activity filters reduce magnitudes but preserve significance; results are not driven by one mechanically tagged commit.
+  }
+  \vspace{0.28cm}
+  \qxtakeaway{These checks strengthen measurement validity and spillover evidence; they do not independently identify adoption timing.}
+\end{frame}
+
+% 23
+\begin{frame}[t]{Mechanism diagnostic: breadth works through volume}
+  \vspace{0.38cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Monthly portfolio}{%
+        \small Language breadth stays above baseline after adoption because developers make more commits across more repositories and languages.
+      }
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Per-commit diversity}{%
+        \small The number of languages per commit rises mainly in the adoption month and is not persistently higher afterward.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.42cm}
+  \qxblueblock{Economic reading}{%
+    \small Claude adoption is associated with a scale expansion across the developer's monthly portfolio, not a lasting transformation of each individual commit into a more multilingual object.
+  }
+  \vspace{0.28cm}
+  \qxredblock{Remaining ambiguity}{%
+    \small Higher output volume is consistent with lower execution costs, but also with a new deadline, employer, or project that raises both tool demand and coding activity.
+  }
+\end{frame}
+
+% 24
+\begin{frame}[t]{Heterogeneity evidence}
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Specialists respond more}{%
+        \small Within activity strata, developers with concentrated pre-adoption portfolios show substantially larger first-language use than generalists. This matches the unfamiliar-language margin.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Illustrative adoption-month effects}{%
+        \small High-activity specialists: $0.981$ versus $0.301$ for generalists. Low-activity specialists: $2.388$ versus $1.015$.
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.36cm}
+  \qxblueblock{What it supports}{%
+    \small The pattern is consistent with agents relaxing unfamiliar-language constraints rather than merely intensifying an already broad portfolio.
+  }
+  \vspace{0.28cm}
+  \qxredblock{What it does not identify}{%
+    \small Specialization and activity are endogenous portfolio characteristics. They need not isolate language skill or general ability from project selection.
+  }
+\end{frame}
+
+% 25
+\begin{frame}[t]{Pressure test I: the activation band is generic}
+  \vspace{0.34cm}
+  \qxredblock{Same comparative static without an agent}{%
+    \small Let any intervention lower the old entry threshold by $\tau>0$. Then
+    \[
+      T^G=T^1-\tau,
+      \qquad
+      Z^G-Z^1=\mathrm{I}(T^1-\tau\le\omega<T^1).
+    \]
+    This is exactly an activation band.
+  }
+  \vspace{0.30cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \qxblueblock{Could generate it}{\small Better libraries, an expert collaborator, reusable templates, employer support, or a conventional productivity improvement.}
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \qxredblock{Agent-specific content}{\small The no-foothold and delegation-cost assumptions explain why the new threshold should belong to an agent. The band itself does not.}
+    \end{column}
+  \end{columns}
+  \vspace{0.28cm}
+  \qxtakeaway{The model organizes a plausible agent mechanism, but the central threshold theorem is not a uniqueness theorem.}
+\end{frame}
+
+% 26
+\begin{frame}[t]{Pressure test II: selection can mimic frontier expansion}
+  \vspace{0.25cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \qxblueblock{Zero-effect counterexample}{%
+        \small Let a project shock $P_{it}$ trigger adoption and directly raise language breadth:
+        \[
+          A_{it}=\mathrm{I}(P_{it}\ge c_i),\qquad
+          Y_{it}=\mu_i+\lambda_t+\beta P_{it}+\tau A_{it}+\varepsilon_{it}.
+        \]
+        At adoption, the event-study contrast is
+        \[
+          \tau+\beta\{\E[P\mid\text{adopt}]-\E[P\mid\text{not yet}]\}.
+        \]
+        It is positive with $\tau=0$ whenever adopters select on larger project shocks.
+      }
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \qxredblock{Verdict}{%
+        \small \alert{Mechanism-consistent, not mechanism-identified.}
+        The evidence documents a large and robust coincidence between Claude adoption and portfolio expansion, but cannot separate delegation from project selection.
+      }
+      \vspace{0.22cm}
+      \qxblueblock{What would be cleaner}{%
+        \small Exogenous access or rollout timing; credible instruments; repository-level shocks with unaffected developers; or a comparison against equally large non-agent productivity improvements.
+      }
+      \vspace{0.22cm}
+      \qxredblock{Repository audit}{%
+        \small Lean checks the threshold and selection algebra; the simulation produces an adoption jump with a true Claude effect of zero.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

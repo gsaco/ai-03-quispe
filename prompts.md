@@ -133,3 +133,28 @@ Debemos trabajar en branch1
 ## Answer 3 — Assistant
 
 De acuerdo: haré toda la entrega en `branch1`.
+
+---
+
+## Prompt 4 — User
+
+I need now an extended deck with more details of the paper (as in the other
+repo). Avoid math notation in the main README. It must look good. Also,
+elaborate a verification in a folder called lean of the paper. Do not do any
+comment on any issue. Just what I asked now.
+
+## Answer 4 — Assistant
+
+The repository now includes a polished 26-slide extended deck covering the
+paper's production modes, threshold results, data construction, staggered
+event-study design, estimates, dynamics, robustness checks, heterogeneity, and
+the two requested objections. The main README presents the same argument in
+plain language without mathematical notation.
+
+The `lean/` appendix machine-checks three parts of the audit: adding delegation
+cannot reduce the best available surplus; a lower threshold produces exactly
+the claimed activation band but can be reproduced by a generic productivity
+improvement; and selection on a project shock can generate a positive
+adoption-time contrast when the true Claude effect is zero. The Lean project
+builds successfully with warnings treated as errors. No issue comment was
+made.

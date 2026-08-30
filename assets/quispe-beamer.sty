@@ -43,6 +43,7 @@
 \setbeamerfont{frametitle}{size=\large,series=\bfseries}
 \setbeamerfont{block title}{size=\normalsize,series=\bfseries}
 \setbeamerfont{footline}{size=\scriptsize}
+\providecommand{\qxdecklabel}{Quispe \& Xu (2026) · language-frontier audit}
 
 \setbeamertemplate{frametitle}{%
   \nointerlineskip
@@ -59,10 +60,10 @@
 \setbeamertemplate{footline}{%
   \leavevmode\hbox{%
     \begin{beamercolorbox}[wd=.83\paperwidth,ht=0.26cm,dp=0.10cm,leftskip=.52cm]{qx foot}%
-      Quispe \& Xu (2026) · language-frontier audit
+      \qxdecklabel
     \end{beamercolorbox}%
     \begin{beamercolorbox}[wd=.17\paperwidth,ht=0.26cm,dp=0.10cm,rightskip=.52cm plus1fil]{qx foot}%
-      \insertframenumber/5
+      \insertframenumber/\inserttotalframenumber
     \end{beamercolorbox}%
   }%
 }

@@ -5,132 +5,142 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2605.25438"><img alt="arXiv paper" src="https://img.shields.io/badge/Paper-arXiv%3A2605.25438-0C2852?style=for-the-badge"></a>
   <a href="presentation.pdf"><img alt="Five-minute deck" src="https://img.shields.io/badge/5--Minute%20Deck-PDF-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
-  <a href="audit/identification-audit.md"><img alt="Identification audit" src="https://img.shields.io/badge/Identification-Audit-3B5526?style=for-the-badge"></a>
-  <a href="prompts.md"><img alt="Prompt record" src="https://img.shields.io/badge/Prompts-Raw-6B4FBB?style=for-the-badge"></a>
+  <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended%20Deck-26%20Slides-0C2852?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
+  <a href="lean/README.md"><img alt="Lean verification" src="https://img.shields.io/badge/Lean-Machine%20Checked-3B5526?style=for-the-badge"></a>
 </p>
 
 <p align="center">
+  <a href="audit/identification-audit.md"><img alt="Identification audit" src="https://img.shields.io/badge/Identification-Audit-3B5526?style=flat-square"></a>
+  <a href="prompts.md"><img alt="Prompt record" src="https://img.shields.io/badge/Prompts-Raw-6B4FBB?style=flat-square"></a>
   <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-008080?style=flat-square&logo=latex&logoColor=white">
-  <img alt="Beamer" src="https://img.shields.io/badge/Beamer-0C2852?style=flat-square">
+  <img alt="Lean 4" src="https://img.shields.io/badge/Lean%204-4B7F52?style=flat-square">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
-  <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white">
 </p>
 
-This repository studies Quispe and Xu's (2026) *Agentic Delegation and the
-Language Frontier of Software Developers*. An earlier draft circulated as
+This repository studies Quispe and Xu's 2026 paper, *Agentic Delegation and
+the Language Frontier of Software Developers*. An earlier draft circulated as
 *Coding Beyond Your Training*.
 
 ## What question does the paper answer?
 
 **Does agentic coding AI expand the set of programming languages in which a
-developer can ship code?** The paper distinguishes a **production frontier**
-from a skill frontier: producing Rust with an agent does not imply learning to
-write Rust alone.
+developer can ship code?** The distinction between production and learning is
+essential. Producing Rust with an agent expands a developer's production
+frontier; it does not show that the developer has learned to write Rust alone.
 
-The proposed mechanism is delegation. Conversational AI augments a developer
-where language-specific skill already makes suggestions useful. An agent adds
-a new mode: the developer specifies and verifies while the tool executes.
+The paper's proposed mechanism is delegation. Conversational AI offers advice
+that is most useful when the developer already has a foothold in the language.
+An agent adds a different production mode: the developer specifies and checks
+the work while the tool executes it.
 
-## The agent's problem
+## The developer's problem
 
-For developer-language opportunity $(i,k,t)$, the developer chooses the best
-available production mode $m$ and activates the language only if its
-certainty-equivalent surplus is non-negative:
+For every developer, language, and month, the developer compares the expected
+surplus from the available production modes. Before adopting an agent, the menu
+contains solo work and conversational assistance. After adoption, it also
+contains delegation. A language becomes active only when the best available
+mode covers the opportunity's execution, interaction, verification, computing,
+and residual-error costs.
 
-$$
-m^*_{ikt}\in\arg\max_{m\in\{S,C,D\}}V^m_{ikt},
-\qquad
-Z_{ikt}=\mathbf 1\!\left\{\max_m V^m_{ikt}\ge 0\right\}.
-$$
+General programming ability matters under delegation because the developer
+must describe the task, break it into pieces, inspect the output, and decide
+whether the result is safe to ship. Language-specific skill matters most for
+solo work and for making conversational suggestions useful.
 
-Before agentic adoption the menu is solo work $S$ plus conversational
-augmentation $C$; afterward it also includes delegation $D$. Delegation trades
-agent execution against compute cost, verification cost, and residual error
-risk. General ability matters because the developer must specify, decompose,
-and verify the delegated work.
+## Main result, with all its conditions
 
-## Main result—with its conditions
+For an unfamiliar language, the paper assumes that conversational assistance
+cannot by itself make production worthwhile without a language-specific skill
+foothold. Delegation expands the frontier only if it reduces the minimum-value
+opportunity worth undertaking after accounting for verification, computing,
+and residual-risk costs. Opportunities that were too marginal for solo work
+but valuable enough under delegation then become newly feasible.
 
-For an **unfamiliar** language, the paper assumes conversational help does not
-pay without a skill foothold, so its effective pre-agent threshold remains
-$T^S$. Delegation expands the frontier only when its threshold is lower,
-$T^D<T^S$. Conditional on an opportunity value $\omega$, the language is then
-activated by the agent exactly when
+That conclusion needs all of the following conditions:
 
-$$
-T^D\le \omega<T^S.
-$$
+- conversational assistance does not overcome the unfamiliar-language entry barrier;
+- delegated execution saves more than it costs to specify, verify, compute, and bear residual risk;
+- relevant opportunities exist between the old and new entry thresholds;
+- the developer has enough general ability to specify and verify the task;
+- comparisons across specialists and generalists hold the pool of candidate unfamiliar languages fixed;
+- the empirical comparison would have followed parallel trends without adoption;
+- no contemporaneous project shock jointly triggers Claude adoption and language diversification.
 
-This activation-band prediction requires: the no-foothold assumption for
-conversational AI; positive threshold reduction after verification, compute,
-and residual-risk costs; opportunity mass inside the band; and a developer who
-can specify and verify. The specialist result additionally assumes comparable
-unfamiliar-language candidates. Empirically, its interpretation also requires
-that, absent adoption, early and not-yet adopters would have followed parallel
-trends.
+The empirical application uses a public-GitHub panel of 5,346 sustained
+adopters and later adopters. In the adoption month, Claude Code use is
+associated with 2.53 additional active languages, 1.19 newly used languages,
+and a 0.38 increase in language entropy. The strongest effects occur in the
+adoption month and then shrink. “New” means unseen in the observed history
+since January 2024, and adoption means the first public commit carrying
+Claude's coauthor trailer.
 
-In a 28-month public-GitHub panel of 5,346 sustained adopters, the adoption
-month is associated with **2.53 additional active languages**, **1.19 newly
-used languages**, and a **0.38 increase in language entropy**. These are
-event-time associations for public production, not estimates of learning or a
-settled causal effect. “New” means unseen since January 2024, and adoption is
-the first public commit carrying Claude's coauthor trailer.
+These are event-time associations for public production. They are not direct
+measures of learning, private work, code quality, or a settled causal effect.
 
 ## What does not hold up?
 
-The activation band is **not agent-specific**. Any intervention that lowers an
-entry threshold by the same amount—better libraries, a collaborator, a new
-job, or a sufficiently large productivity shock—produces the identical band.
-Calling the lower threshold $T^D$ does not establish that delegation caused it;
-the distinctive role of the agent comes from assumptions placed on the three
-production modes.
+### The threshold mechanism is not uniquely agentic
 
-The empirical design has the corresponding identification problem. Let
-$P_{it}$ be an unfamiliar-language project shock, let Claude adoption occur
-when that shock crosses a threshold, and let language breadth respond directly
-to the project:
+The activation-band argument is a general threshold result. Any intervention
+that lowers the entry threshold by the same amount can activate the same set of
+marginal opportunities. Better libraries, a collaborator, a new job, or a
+large ordinary productivity improvement could therefore produce the same
+comparative static. The paper's distinctive agent mechanism comes from the
+assumed differences among solo work, conversation, and delegation; it does not
+follow from the threshold logic alone.
 
-$$
-A_{it}=\mathbf 1\{P_{it}\ge c_i\},
-\qquad
-Y_{it}=\mu_i+\lambda_t+\beta P_{it}+\tau A_{it}+\varepsilon_{it}.
-$$
+### The empirical design cannot separate expansion from selection
 
-At first adoption, the event-study coefficient combines the causal effect
-$\tau$ with the selected project shock $\beta P_{it}$. It can therefore jump
-even when **$\tau=0$**. Flat earlier pre-trends, deleting Claude-authored
-commits, and removing the first-Claude language do not solve this: none removes
-the time-varying project shock that determines adoption. The paper recognizes
-this limitation, so the defensible verdict is narrower than its mechanism:
-portfolio expansion coincides with Claude Code adoption and is consistent
-with delegation, but the design cannot distinguish delegation from selection
-into adoption.
+An unfamiliar-language project can both motivate a developer to adopt Claude
+and directly increase the number of languages used. In that case, the adoption
+month contains the true Claude effect plus the effect of selecting into
+adoption when a new project arrives. A visible event-time jump can occur even
+when Claude has no causal effect.
 
-The [identification audit](audit/identification-audit.md) gives the algebra,
-a zero-effect counterexample, and designs that would separate the mechanisms.
-The reproducible simulation in [`sim.py`](sim.py) generates the same
-adoption-time jump with no causal Claude effect.
+Flat earlier trends do not rule this out because the project can arrive in the
+adoption month. Removing Claude-authored commits and deleting the first-Claude
+language clean the measured outcome, but neither makes adoption timing
+exogenous. The paper is appropriately cautious about this limitation. The
+defensible verdict is therefore narrower: language-portfolio expansion
+coincides with Claude Code adoption and is consistent with delegation, but the
+design does not identify delegation as the cause.
+
+The [identification audit](audit/identification-audit.md) develops the
+counterexample and proposes stronger designs. The reproducible
+[`sim.py`](sim.py) simulation creates a positive adoption-time jump while
+setting Claude's true effect to zero. The [Lean appendix](lean/README.md)
+machine-checks the threshold results and the selection decomposition.
+
+## Presentations
+
+| File | Purpose |
+|---|---|
+| [`presentation.pdf`](presentation.pdf) | Required five-minute, five-slide presentation |
+| [`extra/presentation-long.pdf`](extra/presentation-long.pdf) | Extended 26-slide technical presentation |
+| [`presentation.tex`](presentation.tex) | Short-deck Beamer source |
+| [`extra/presentation-long.tex`](extra/presentation-long.tex) | Extended-deck Beamer source |
 
 ## Handwritten check
 
 The required photograph belongs in `hand/selection-derivation.jpg`. The exact
 four-line derivation to reproduce is in [`hand/README.md`](hand/README.md).
-Until that original photograph is added, the final slide displays an explicit
-placeholder rather than pretending a generated image was handwritten.
+Until that original photograph is added, the short deck displays an explicit
+placeholder rather than presenting a generated image as handwritten work.
 
 ## Repository structure
 
 ```text
 .
-├── README.md                   # Question, problem, result, and verdict
-├── prompts.md                  # Raw relevant prompt-answer record
-├── presentation.tex            # Five-frame Beamer source
-├── presentation.pdf            # Compiled five-minute deck
-├── assets/                     # Banner and shared Beamer style
-├── hand/                       # Original derivation photo goes here
+├── README.md                         # Question, conditions, evidence, verdict
+├── prompts.md                        # Raw relevant prompt-answer record
+├── presentation.tex / .pdf          # Required five-slide deck
+├── extra/presentation-long.tex / .pdf
+├── lean/                             # Lean 4 machine-checked audit
+├── assets/                           # Banner and shared Beamer style
+├── hand/                             # Original derivation photo goes here
 ├── audit/identification-audit.md
 ├── figures/selection-counterexample.pdf
-├── sim.py                      # Zero-causal-effect counterexample
+├── sim.py                            # Zero-effect selection counterexample
 └── requirements.txt
 ```
 
@@ -140,10 +150,12 @@ placeholder rather than pretending a generated image was handwritten.
 python3 -m pip install -r requirements.txt
 python3 sim.py
 lualatex presentation.tex
+cd extra && lualatex presentation-long.tex
+cd ../lean && lake build --wfail
 ```
 
 ## Citation
 
-> Quispe, A., & Xu, K. (2026). *Agentic Delegation and the Language Frontier
+> Quispe, A., and Xu, K. 2026. *Agentic Delegation and the Language Frontier
 > of Software Developers: A Model and Evidence from Claude Code on GitHub*.
 > arXiv:2605.25438.
