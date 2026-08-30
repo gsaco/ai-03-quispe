@@ -1,5 +1,8 @@
 # Conversation record
 
+**Shared ChatGPT conversation:**
+[https://chatgpt.com/s/cx_6a94661db6ac8191b97faf3e6f7e6929](https://chatgpt.com/s/cx_6a94661db6ac8191b97faf3e6f7e6929)
+
 The entries below preserve the relevant prompts and answers as written. Tool
 calls, progress messages, and ambient browser metadata are excluded.
 
@@ -20,7 +23,8 @@ the Technological Frontier of Software Developers."*
 The title you cite—*Coding Beyond Your Training: Claude Code and the
 Technological Frontier of Software Developers*—is the paper's earlier title.
 The current version is coauthored by Alexander Quispe and Kevin Xu and titled
-*Agentic Delegation and the Language Frontier of Software Developers*.
+*Agentic Delegation and the Language Frontier of Software Developers: A Model
+and Evidence from Claude Code on GitHub*.
 
 The paper argues that conversational AI mainly helps developers work in
 languages they already understand, whereas agentic AI can inspect repositories,
@@ -216,3 +220,45 @@ without cropping or image edits. The final slide displays it upright through a
 LaTeX rotation and retains the Lean results and verdict alongside it. The deck
 was recompiled and visually audited before the repository was committed and
 pushed to `branch1`.
+
+---
+
+## Prompt 8 — User
+
+Use the exact title of the papers in all parts of the repo where is required:
+Agentic Delegation and the Language Frontier of Software Developers: A Model and
+Evidence from Claude Code on GitHub
+
+## Answer 8 — Assistant
+
+The canonical paper title is now written in full in the repository banner,
+README, short deck, extended deck, and PDF metadata. The historical wording in
+the raw first prompt remains unchanged because `prompts.md` is the required raw
+conversation record.
+
+---
+
+## Prompt 9 — User
+
+remove the readme in the hand folder. remove the audit folder
+
+## Answer 9 — Assistant
+
+The file `hand/README.md` and the complete `audit/` directory were removed. All
+links and fallback text that pointed to those paths were also removed, while
+the original handwritten photograph in `hand/selection-derivation.png` was
+preserved.
+
+---
+
+## Prompt 10 — User
+
+update the prompts.md, also add this link in the top of prompts.md
+[https://chatgpt.com/s/cx_6a94661db6ac8191b97faf3e6f7e6929.](https://chatgpt.com/s/cx_6a94661db6ac8191b97faf3e6f7e6929.)
+then commit and push.
+
+## Answer 10 — Assistant
+
+The shared ChatGPT conversation link was added at the top of `prompts.md`, and
+the latest request was added to the raw conversation record. The complete
+pending repository update was verified, committed, and pushed to `branch1`.

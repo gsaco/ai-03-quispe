@@ -7,12 +7,5 @@
 *.snm
 *.synctex.gz
 *.toc
-audit/rendered/
-audit/pages/
-audit/bbox.xml
-audit/presentation.*
-audit/contact_sheet.png
-audit/audit_report.md
-audit/extended/
 __pycache__/
 lean/.lake/

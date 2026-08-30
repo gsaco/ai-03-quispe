@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/header.svg" alt="Agentic Delegation and the Language Frontier" width="100%">
+  <img src="assets/header.svg" alt="Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub" width="100%">
 </p>
 
 <p align="center">
@@ -10,16 +10,15 @@
 </p>
 
 <p align="center">
-  <a href="audit/identification-audit.md"><img alt="Identification audit" src="https://img.shields.io/badge/Identification-Audit-3B5526?style=flat-square"></a>
   <a href="prompts.md"><img alt="Prompt record" src="https://img.shields.io/badge/Prompts-Raw-6B4FBB?style=flat-square"></a>
   <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-008080?style=flat-square&logo=latex&logoColor=white">
   <img alt="Lean 4" src="https://img.shields.io/badge/Lean%204-4B7F52?style=flat-square">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white">
 </p>
 
-This repository studies Quispe and Xu's 2026 paper, *Agentic Delegation and
-the Language Frontier of Software Developers*. An earlier draft circulated as
-*Coding Beyond Your Training*.
+This repository studies Quispe and Xu's 2026 paper, *Agentic Delegation and the
+Language Frontier of Software Developers: A Model and Evidence from Claude Code
+on GitHub*.
 
 ## What question does the paper answer?
 
@@ -105,11 +104,10 @@ defensible verdict is therefore narrower: language-portfolio expansion
 coincides with Claude Code adoption and is consistent with delegation, but the
 design does not identify delegation as the cause.
 
-The [identification audit](audit/identification-audit.md) develops the
-counterexample and proposes stronger designs. The reproducible
-[`sim.py`](sim.py) simulation creates a positive adoption-time jump while
-setting Claude's true effect to zero. The [Lean appendix](lean/README.md)
-machine-checks the threshold results and the selection decomposition.
+The reproducible [`sim.py`](sim.py) simulation creates a positive adoption-time
+jump while setting Claude's true effect to zero. The
+[Lean appendix](lean/README.md) machine-checks the threshold results and the
+selection decomposition.
 
 ## Presentations
 
@@ -124,8 +122,7 @@ machine-checks the threshold results and the selection decomposition.
 
 The original photograph is stored in `hand/selection-derivation.png` and appears
 on the final slide of the short deck. The repository preserves the uncropped
-file; the Beamer source rotates it only for upright display. A brief guide to
-the two checks on the page is in [`hand/README.md`](hand/README.md).
+file; the Beamer source rotates it only for upright display.
 
 ## Repository structure
 
@@ -138,7 +135,6 @@ the two checks on the page is in [`hand/README.md`](hand/README.md).
 ├── lean/                             # Lean 4 machine-checked audit
 ├── assets/                           # Banner and shared Beamer style
 ├── hand/                             # Original derivation photo goes here
-├── audit/identification-audit.md
 ├── figures/selection-counterexample.pdf
 ├── sim.py                            # Zero-effect selection counterexample
 └── requirements.txt
