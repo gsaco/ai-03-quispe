@@ -158,3 +158,28 @@ improvement; and selection on a project shock can generate a positive
 adoption-time contrast when the true Claude effect is zero. The Lean project
 builds successfully with warnings treated as errors. No issue comment was
 made.
+
+---
+
+## Prompt 5 — User
+
+I need to introduce Aouad–Lykouris–Zhong, which makes AI a *substitutable
+input* and predicts deskilling. This phenomenon, opposite conclusions, driven
+almost entirely by one modelling choice. Identifying that choice is a strong
+slide 3. Establish clearly the relationship. And minimally in slide 4 include
+some results from my Lean testing.
+
+## Answer 5 — Assistant
+
+The revised third substantive slide makes the relationship explicit. Both
+models allow AI to substitute for human execution. Quispe and Xu hold the skill
+stock fixed and study a static expansion of the production menu. Aouad,
+Lykouris, and Zhong close the feedback from reduced human effort to future
+skill. That effort-dependent skill law of motion—not substitutability by
+itself—is the modelling choice that turns short-run assistance into possible
+deskilling and a long-run productivity decline.
+
+The fourth substantive slide now reports two kernel-checked Lean results: any
+lower agent threshold can be represented by an equivalent generic productivity
+gain, and positive selection on a project shock can produce a positive
+adoption-time estimate when the true Claude effect is zero.

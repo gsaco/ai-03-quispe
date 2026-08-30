@@ -107,43 +107,48 @@
 \end{frame}
 
 % 4/5 — what I did
-\begin{frame}[t]{What I did: two pressure tests}
-  \setlength{\abovedisplayskip}{0.24em}
-  \setlength{\belowdisplayskip}{0.24em}
-  \vspace{0.12cm}
-  \qxredblock{1. The activation band does not uniquely require an agent}{%
-    \small
-    A generic productivity or fixed-cost improvement $\tau>0$ gives
-    $T^G=T^1-\tau$ and therefore
-    \[
-      Z^G-Z^1=\mathbb I(T^1-\tau\le\omega<T^1).
-    \]
-    This is the same comparative static. Agent specificity comes from how the
-    modes are assumed, not from the threshold result itself.
-  }
+\begin{frame}[t]{What I did: one modelling choice flips the conclusion}
+  \setlength{\abovedisplayskip}{0.22em}
+  \setlength{\belowdisplayskip}{0.22em}
+  \vspace{0.10cm}
 
-  \vspace{0.18cm}
-  \qxblueblock{2. A zero-effect selection counterexample}{%
-    \small
-    Let an unfamiliar-language project shock both trigger adoption and raise breadth:
-    \[
-      A_{it}=\mathbb I[P_{it}\ge c_i],\qquad
-      Y_{it}=\mu_i+\lambda_t+\beta P_{it}+\tau A_{it}+\varepsilon_{it}.
-    \]
-    At first adoption,
-    \[
-      \widehat{\ATT}(e)=\tau+
-      \beta\!\left[\E(P_{it}\mid G_i=g)-\E(P_{it}\mid G_i>t)\right].
-    \]
-    The repository simulation sets $\tau=0$ and still produces a sharp event-time jump.
-  }
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Quispe--Xu: production expands}{%
+        \small
+        Language skill $s_{ik}$ is a \textbf{fixed state} over the choice horizon.
+        Claude adds delegation to the menu and lowers the entry threshold:
+        \[
+          \{S,C\}\longrightarrow\{S,C,D\},
+          \qquad T^D<T^S.
+        \]
+        Result: more languages become feasible. This is explicitly a
+        \alert{production frontier}, not learning.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Aouad--Lykouris--Zhong: skills can erode}{%
+        \small
+        Skill, effort, and AI are substitutable inputs:
+        \[
+          x_t=s_t+e_t+a_t,
+          \qquad a_t\uparrow\Rightarrow e_t^*\downarrow.
+        \]
+        They then make future skill depend on current effort. With myopic users
+        and a positive sensitivity gap, lower effort shifts the steady-state
+        skill distribution downward and productivity can fall.
+      }
+    \end{column}
+  \end{columns}
 
-  \vspace{0.16cm}
-  \qxtakeaway{The robustness checks clean the outcome; they do not exogenize the timing of adoption.}
+  \vspace{0.22cm}
+  \qxtakeaway{The decisive choice is the skill law of motion: fixed skill gives static frontier expansion; effort-dependent skill turns substitution into deskilling.}
+  \vspace{0.08cm}
+  {\scriptsize\color{QXMuted}Aouad, Lykouris \& Zhong (2026), \href{https://arxiv.org/abs/2605.11350}{\color{QXNavy}arXiv:2605.11350}. With exogenous skill transitions, their productivity paradox disappears.\par}
 \end{frame}
 
-% 5/5 — hand check and verdict
-\begin{frame}[t]{Hand check: where I did not believe the AI}
+% 5/5 — hand, Lean check, and verdict
+\begin{frame}[t]{Hand and Lean check: where I did not believe the AI}
   \setlength{\abovedisplayskip}{0.22em}
   \setlength{\belowdisplayskip}{0.22em}
 
@@ -165,30 +170,29 @@
       }
     \end{column}
     \begin{column}{0.52\textwidth}
-      \qxredblock{The AI claim I challenged}{%
-        \small Flat pre-trends and outcome-side robustness make the portfolio
-        expansion persuasive evidence for agentic delegation.
+      \qxblueblock{Lean result 1 · threshold non-uniqueness}{%
+        \small For every $T^D<T^1$, Lean constructs a generic gain $g>0$ such
+        that $T^1-g=T^D$. The lower threshold and its activation band are
+        therefore not uniquely agentic.
       }
 
-      \vspace{0.08cm}
-      \qxblueblock{What the derivation shows}{%
-        \small
-        With $\tau=0$,
+      \vspace{0.07cm}
+      \qxredblock{Lean result 2 · zero-effect selection}{%
+        \small Lean also verifies the sign implication
         \[
-          \widehat{\ATT}(0)=
-          \beta\{\E[P\mid P\ge c]-\E[P\mid P<c]\}>0
+          \tau=0,\ \beta>0,\ P_A>P_C
+          \quad\Longrightarrow\quad \widehat{\ATT}(0)>0.
         \]
-        whenever $\beta>0$. The common project shock creates adoption and
-        diversification together. Earlier pre-trends may still be flat because
-        the shock arrives at $e=0$.
+        A project shock can create adoption and diversification together while
+        all earlier differences remain flat.
       }
 
-      \vspace{0.08cm}
-      \qxredblock{Verdict: \alert{mechanism-consistent, not mechanism-identified}}{%
-        \small The paper documents a large, robust coincidence but cannot
-        distinguish delegation from project selection. Causal identification
-        needs exogenous adoption variation or a comparison with equally large
-        non-agent productivity shocks.
+      \vspace{0.07cm}
+      \qxredblock{Verdict: \alert{coherent mechanism, unidentified cause}}{%
+        \small Quispe--Xu can explain production expansion even while the
+        Aouad--Lykouris--Zhong feedback predicts deskilling. The data measure the
+        first outcome, not the missing skill stock, and voluntary adoption still
+        confounds delegation with project selection.
       }
     \end{column}
   \end{columns}
