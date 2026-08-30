@@ -183,3 +183,21 @@ The fourth substantive slide now reports two kernel-checked Lean results: any
 lower agent threshold can be represented by an equivalent generic productivity
 gain, and positive selection on a project shock can produce a positive
 adoption-time estimate when the true Claude effect is zero.
+
+---
+
+## Prompt 6 — User
+
+Add more information in slide What I did to clearly answert the questions wihtout
+removing what you just added.
+
+## Answer 6 — Assistant
+
+The “What I did” slide retains the complete Quispe–Xu versus
+Aouad–Lykouris–Zhong comparison and the fixed-versus-endogenous skill
+distinction. It now ends with two explicit answers. The activation threshold
+does not require an agent because any equally large generic threshold reduction
+creates the same band. The empirical design does not identify causal frontier
+expansion because a contemporaneous project can jointly trigger adoption and
+language breadth, while flat pre-trends and outcome exclusions do not make
+adoption timing exogenous.
