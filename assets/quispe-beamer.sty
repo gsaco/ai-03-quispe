@@ -1,0 +1,93 @@
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{fontspec}
+\RequirePackage{amsmath,amssymb,mathtools}
+\RequirePackage{booktabs}
+\RequirePackage{graphicx}
+\RequirePackage{microtype}
+\RequirePackage{ragged2e}
+\RequirePackage{hyperref}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+
+\IfFontExistsTF{Avenir Next}{\setsansfont{Avenir Next}}{\setsansfont{TeX Gyre Heros}}
+
+\definecolor{QXNavy}{HTML}{0C2852}
+\definecolor{QXRed}{HTML}{982A34}
+\definecolor{QXGraphite}{HTML}{20242A}
+\definecolor{QXMuted}{HTML}{5B6470}
+\definecolor{QXRedTitle}{HTML}{F4E8EA}
+\definecolor{QXRedBody}{HTML}{F9F5F5}
+\definecolor{QXBlueTitle}{HTML}{EBEEF1}
+\definecolor{QXBlueBody}{HTML}{F5F6F8}
+\definecolor{QXGreen}{HTML}{3B5526}
+\definecolor{QXDivider}{HTML}{D9DEE4}
+
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=0.54cm,text margin right=0.54cm}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{normal text}{fg=QXGraphite,bg=white}
+\setbeamercolor{frametitle}{fg=white,bg=QXNavy}
+\setbeamercolor{structure}{fg=QXNavy}
+\setbeamercolor{alerted text}{fg=QXRed}
+\setbeamercolor{qx red title}{fg=QXRed,bg=QXRedTitle}
+\setbeamercolor{qx red body}{fg=QXGraphite,bg=QXRedBody}
+\setbeamercolor{qx blue title}{fg=QXNavy,bg=QXBlueTitle}
+\setbeamercolor{qx blue body}{fg=QXGraphite,bg=QXBlueBody}
+\setbeamercolor{qx accent line}{bg=QXRed}
+\setbeamercolor{qx divider line}{bg=QXDivider}
+\setbeamercolor{qx foot}{fg=QXMuted,bg=white}
+\setbeamercolor{qx takeaway}{fg=white,bg=QXNavy}
+\setbeamercolor{qx placeholder}{fg=QXMuted,bg=QXBlueBody}
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{footline}{size=\scriptsize}
+
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.62cm,dp=0.23cm,leftskip=0.48cm]{frametitle}%
+    \usebeamerfont{frametitle}\insertframetitle
+  \end{beamercolorbox}%
+  \nointerlineskip
+  \hbox{%
+    \begin{beamercolorbox}[wd=1.05cm,ht=0.018cm,dp=0cm]{qx accent line}\end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=\dimexpr\paperwidth-1.05cm\relax,ht=0.018cm,dp=0cm]{qx divider line}\end{beamercolorbox}%
+  }%
+}
+
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+    \begin{beamercolorbox}[wd=.83\paperwidth,ht=0.26cm,dp=0.10cm,leftskip=.52cm]{qx foot}%
+      Quispe \& Xu (2026) · language-frontier audit
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.17\paperwidth,ht=0.26cm,dp=0.10cm,rightskip=.52cm plus1fil]{qx foot}%
+      \insertframenumber/5
+    \end{beamercolorbox}%
+  }%
+}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ATT}{\operatorname{ATT}}
+\newcommand{\qxredblock}[2]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm,leftskip=0.07cm,rightskip=0.07cm]{qx red title}\usebeamerfont{block title}#1\end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.13cm,leftskip=0.10cm,rightskip=0.10cm]{qx red body}#2\end{beamercolorbox}%
+}
+\newcommand{\qxblueblock}[2]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.10cm,leftskip=0.07cm,rightskip=0.07cm]{qx blue title}\usebeamerfont{block title}#1\end{beamercolorbox}%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.13cm,leftskip=0.10cm,rightskip=0.10cm]{qx blue body}#2\end{beamercolorbox}%
+}
+\newcommand{\qxtwocol}[4]{%
+  \noindent\hspace*{0.12cm}%
+  \begin{minipage}[t]{#1\linewidth}\vspace{0pt}#2\end{minipage}%
+  \hfill
+  \begin{minipage}[t]{#3\linewidth}\vspace{0pt}#4\end{minipage}%
+  \hspace*{0.12cm}\par
+}
+\newcommand{\qxtakeaway}[1]{%
+  \begin{beamercolorbox}[wd=\linewidth,sep=0.12cm,leftskip=0.10cm,rightskip=0.10cm]{qx takeaway}
+    \small\bfseries #1
+  \end{beamercolorbox}%
+}
