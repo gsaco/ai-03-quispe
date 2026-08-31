@@ -1,0 +1,230 @@
+% Compatibility shims for the local hyperref/LaTeX combination.
+\providecommand\IfDocumentMetadataT[1]{}
+\providecommand\IfDocumentMetadataTF[2]{#2}
+\documentclass[aspectratio=169,9pt]{beamer}
+\input{assets/quispe-beamer.sty}
+\title{Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub}
+\author{Gabriel Saco}
+\hypersetup{pdftitle={Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub},pdfauthor={Gabriel Saco}}
+
+\begin{document}
+
+% 1/5 — title
+\begin{frame}[plain]
+  \setbeamertemplate{footline}{}
+  \vspace*{0.80cm}
+  {\fontsize{16.5}{19.5}\selectfont\bfseries
+    Agentic Delegation and the Language Frontier\par
+    of Software Developers: A Model and Evidence\par
+    from Claude Code on GitHub\par}
+  \vspace{0.22cm}
+  {\fontsize{11.5}{14}\selectfont What the threshold model predicts—and what the design cannot identify\par}
+  \vspace{0.34cm}
+  {\color{QXRed}\rule{\linewidth}{0.55pt}}
+  \vspace{0.52cm}
+  {\normalsize\bfseries Gabriel Saco\par}
+  \vspace{0.06cm}
+  {\normalsize August 29, 2026\par}
+  \vspace{0.20cm}
+  {\small Universidad del Pac\'ifico\par}
+  \vspace{0.22cm}
+  {\small\color{QXMuted}Quispe \& Xu (2026) · arXiv:2605.25438\par}
+  \vspace{0.10cm}
+  {\small\href{https://github.com/gsaco/ai-03-quispe/tree/branch1}{\color{QXNavy}\ttfamily github.com/gsaco/ai-03-quispe/tree/branch1}\par}
+  \vfill
+  {\scriptsize\color{QXMuted}AI Economic Modeling\hfill Five-minute paper audit\par}
+\end{frame}
+
+% 2/5 — paper and problem
+\begin{frame}[t]{The paper and the developer's problem}
+  \vspace{0.22cm}
+  \qxredblock{Question and economic mechanism}{%
+    \small
+    \textbf{Question.} Does an agent expand the set of programming languages
+    in which a developer can ship code? This is a \alert{production frontier},
+    not a claim that the developer learns each language.
+
+    \vspace{0.06cm}
+    \textbf{Mechanism.} Conversational AI augments existing language skill;
+    agentic AI adds delegated execution under human specification and verification.
+  }
+
+  \vspace{0.24cm}
+  \qxblueblock{Choice problem for developer $i$, language $k$, month $t$}{%
+    \small
+    \qxtwocol{.53}{%
+      Pre-agent menu $\mathcal M_1=\{S,C\}$; post-agent menu
+      $\mathcal M_2=\{S,C,D\}$:
+      \[
+        m^*_{ikt}\in\arg\max_{m\in\mathcal M_g}V^m_{ikt},
+        \qquad
+        Z^g_{ikt}=\mathbb I(\max_mV^m_{ikt}\ge0).
+      \]
+      Monthly breadth is $N^g_{it}=\sum_k Z^g_{ikt}$.
+    }{.39}{%
+      \textbf{$S$:} own execution.\\[0.07cm]
+      \textbf{$C$:} suggestion gain $\gamma s-r_C$.\\[0.07cm]
+      \textbf{$D$:} agent execution $\lambda a z(A)$, net of verification
+      $\kappa(a,s)$, compute $r_D$, and residual risk.
+    }
+  }
+\end{frame}
+
+% 3/5 — main result and conditions
+\begin{frame}[t]{Main result: a conditional activation band}
+  \setlength{\abovedisplayskip}{0.28em}
+  \setlength{\belowdisplayskip}{0.28em}
+  \vspace{0.12cm}
+  \qxblueblock{Proposition 2 for an unfamiliar language}{%
+    \small
+    If conversational assistance has no value without a skill foothold,
+    $\gamma\underline s-r_C\le0$, then $T^1=T^S$. If delegation lowers the
+    threshold, $B\equiv T^S-T^D>0$, then
+    \[
+      Z^2-Z^1=\mathbb I(T^D\le\omega<T^S),
+      \qquad
+      \Pr(Z^2-Z^1=1)=F(T^S)-F(T^D).
+    \]
+  }
+
+  \vspace{0.18cm}
+  \qxredblock{Conditions that do the work}{%
+    \small
+    \qxtwocol{.46}{%
+      \textbf{Theory}
+      \begin{itemize}\itemsep0.04cm
+        \item no conversational foothold in $k$;
+        \item verification, compute, and residual-risk costs leave $B>0$;
+        \item opportunity mass lies inside $[T^D,T^S)$;
+        \item the developer can specify and verify.
+      \end{itemize}
+    }{.46}{%
+      \textbf{Empirical interpretation}
+      \begin{itemize}\itemsep0.04cm
+        \item public, sustained adopters; “new” since Jan. 2024;
+        \item not-yet adopters are valid counterfactuals;
+        \item no time-varying project shock jointly moves adoption and languages.
+      \end{itemize}
+    }
+  }
+
+  \vspace{0.16cm}
+  \qxtakeaway{Observed at adoption: +2.53 active languages and +1.19 newly used languages; these are event-time associations, not identified causal effects.}
+\end{frame}
+
+% 4/5 — what I did
+\begin{frame}[t]{What I did: one modelling choice, two direct answers}
+  \setlength{\abovedisplayskip}{0.22em}
+  \setlength{\belowdisplayskip}{0.22em}
+  \vspace{0.10cm}
+
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Quispe--Xu: production expands}{%
+        \small
+        Language skill $s_{ik}$ is a \textbf{fixed state} over the choice horizon.
+        Claude adds delegation to the menu and lowers the entry threshold:
+        \[
+          \{S,C\}\longrightarrow\{S,C,D\},
+          \qquad T^D<T^S.
+        \]
+        Result: more languages become feasible. This is explicitly a
+        \alert{production frontier}, not learning.
+      }
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Aouad--Lykouris--Zhong: skills can erode}{%
+        \small
+        Skill, effort, and AI are substitutable inputs:
+        \[
+          x_t=s_t+e_t+a_t,
+          \qquad a_t\uparrow\Rightarrow e_t^*\downarrow.
+        \]
+        They then make future skill depend on current effort. With myopic users
+        and a positive sensitivity gap, lower effort shifts the steady-state
+        skill distribution downward and productivity can fall.
+      }
+    \end{column}
+  \end{columns}
+
+  \vspace{0.14cm}
+  \qxtakeaway{The decisive choice is the skill law of motion: fixed skill gives static frontier expansion; effort-dependent skill turns substitution into deskilling.}
+
+  \vspace{0.12cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{beamercolorbox}[sep=0.10cm,leftskip=0.05cm,rightskip=0.05cm]{qx blue body}
+        {\small\bfseries\color{QXNavy}Q1 · Does the threshold require an agent? \alert{No.}\par}
+        \vspace{0.04cm}
+        {\footnotesize Any positive generic gain that lowers $T^1$ produces the
+        same activation band. Agent specificity comes from the mode assumptions,
+        not from the threshold algebra.\par}
+      \end{beamercolorbox}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{beamercolorbox}[sep=0.10cm,leftskip=0.05cm,rightskip=0.05cm]{qx red body}
+        {\small\bfseries\color{QXRed}Q2 · Does the design identify expansion? \alert{No.}\par}
+        \vspace{0.04cm}
+        {\footnotesize A new-language project can trigger adoption and breadth
+        together. Flat pre-trends and outcome exclusions do not make adoption
+        timing exogenous.\par}
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
+
+  \vspace{0.06cm}
+  {\scriptsize\color{QXMuted}Aouad, Lykouris \& Zhong (2026), \href{https://arxiv.org/abs/2605.11350}{\color{QXNavy}arXiv:2605.11350}. With exogenous skill transitions, their productivity paradox disappears.\par}
+\end{frame}
+
+% 5/5 — hand, Lean check, and verdict
+\begin{frame}[t]{Hand and Lean check: where I did not believe the AI}
+  \setlength{\abovedisplayskip}{0.22em}
+  \setlength{\belowdisplayskip}{0.22em}
+
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \IfFileExists{hand/selection-derivation.png}{%
+        \centering
+        \fcolorbox{QXDivider}{white}{\includegraphics[angle=-90,origin=c,width=.94\linewidth,height=5.65cm,keepaspectratio]{hand/selection-derivation.png}}
+        \par\vspace{0.05cm}{\scriptsize\color{QXMuted}My handwritten threshold and selection derivation.\par}
+      }{%
+        \begin{beamercolorbox}[wd=.96\linewidth,ht=5.60cm,dp=.24cm,center]{qx placeholder}
+          \vspace{1.64cm}
+          {\Large\bfseries Handwritten photo goes here\par}
+          \vspace{0.25cm}
+          {\small Add \texttt{hand/selection-derivation.png}\par}
+          \vspace{0.18cm}
+          {\footnotesize Add the original handwritten derivation.\par}
+        \end{beamercolorbox}
+      }
+    \end{column}
+    \begin{column}{0.52\textwidth}
+      \qxblueblock{Lean result 1 · threshold non-uniqueness}{%
+        \small For every $T^D<T^1$, Lean constructs a generic gain $g>0$ such
+        that $T^1-g=T^D$. The lower threshold and its activation band are
+        therefore not uniquely agentic.
+      }
+
+      \vspace{0.07cm}
+      \qxredblock{Lean result 2 · zero-effect selection}{%
+        \small Lean also verifies the sign implication
+        \[
+          \tau=0,\ \beta>0,\ P_A>P_C
+          \quad\Longrightarrow\quad \widehat{\ATT}(0)>0.
+        \]
+        A project shock can create adoption and diversification together while
+        all earlier differences remain flat.
+      }
+
+      \vspace{0.07cm}
+      \qxredblock{Verdict: \alert{coherent mechanism, unidentified cause}}{%
+        \small Quispe--Xu can explain production expansion even while the
+        Aouad--Lykouris--Zhong feedback predicts deskilling. The data measure the
+        first outcome, not the missing skill stock, and voluntary adoption still
+        confounds delegation with project selection.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\end{document}

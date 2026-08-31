@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="360" viewBox="0 0 1400 360" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub</title>
+  <desc id="desc">A restrained academic banner showing a developer frontier and an identification gap.</desc>
+  <rect width="1400" height="360" fill="#F7F8FA"/>
+  <rect width="18" height="360" fill="#982A34"/>
+  <path d="M0 294 H1400" stroke="#D9DEE4" stroke-width="2"/>
+  <path d="M920 278 C995 244 1035 235 1094 181 C1150 130 1217 112 1375 82" fill="none" stroke="#0C2852" stroke-width="8" stroke-linecap="round"/>
+  <path d="M920 278 C1005 247 1048 222 1125 219 C1210 215 1288 172 1375 132" fill="none" stroke="#982A34" stroke-width="6" stroke-linecap="round" stroke-dasharray="16 13"/>
+  <circle cx="1094" cy="181" r="12" fill="#0C2852"/>
+  <circle cx="1125" cy="219" r="10" fill="#982A34"/>
+  <text x="76" y="92" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="26" font-weight="600" fill="#982A34" letter-spacing="2">QUISPE &amp; XU (2026)</text>
+  <text x="76" y="145" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="39" font-weight="700" fill="#0C2852">Agentic Delegation and the</text>
+  <text x="76" y="190" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="29" font-weight="700" fill="#20242A">Language Frontier of Software Developers:</text>
+  <text x="76" y="231" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="27" font-weight="600" fill="#20242A">A Model and Evidence from Claude Code on GitHub</text>
+  <text x="76" y="270" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="22" fill="#4B5563">A threshold-model and identification audit</text>
+  <text x="76" y="331" font-family="Avenir Next, Helvetica, Arial, sans-serif" font-size="18" fill="#6B7280">Gabriel Saco · AI Economic Modeling · 2026</text>
+</svg>
