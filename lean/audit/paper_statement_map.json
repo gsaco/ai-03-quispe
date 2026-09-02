@@ -1,0 +1,178 @@
+{
+  "schema": 1,
+  "paper": "QX26AgenticDelegation",
+  "source_url": "https://arxiv.org/abs/2605.25438v2",
+  "source_version": "arXiv v2, 2026-07-07",
+  "source_artifact_path": "papers/QX26AgenticDelegation/source-audited.pdf",
+  "source_artifact_sha256": "cddc048711c43022d5fd01b995bfb1114c728c8c879b809b5fdc354a391d3c35",
+  "source_inventory_kind": "independent_named_theoretical_statement_inventory",
+  "source_curated": true,
+  "seed_scaffold": false,
+  "source_coverage_mode": "named_theoretical_statements",
+  "semantic_contract_policy": {
+    "schema": 1,
+    "activation": "Before Lean drafting, independently inventory every material source atom against exact pinned source quote bytes; do not infer that inventory from declaration, binder, field, or function names. After a source item has an audited paper-local specification and a theorem/lemma proving or refuting it, add top-level semantic_contract_schema: 1, classify every item with an explicit claim_bearing Boolean, and record semantic_contract for each true item. At formalized closeout, also add source_claim_atoms_schema: 1 and source_spec_correspondence_schema: 1. Bind each atom to an elaborated Spec component and account for every material Lean-closure terminal, including proof and instance arguments, by source atom, approved source correction/additional assumption, checked Lean derivation, or version-pinned foundation basis. Each statement-first row supplies an inactive semantic_contract_template pairing its transparent `...Spec : Prop` with its theorem/lemma. Promote that exact template only after the independent source audit passes, the theorem has exactly the transparent Spec type, the closure record passes, and the proof hole is replaced. Do not manufacture a contract from the temporary by-sorry statement skeleton alone. Legacy v10 evidence remains readable but is not a v11 realization credential. For a source-game result whose feasible-action equilibrium comparison uses a conditional/posterior or observation-contingent value, add the separately byte-pinned `semantic_context_requirements` kind `strategic_observation_totality`; it requires an explicit off-path/zero-probability totality audit and cannot be satisfied by a Lean-only default value.",
+    "required_fields": [
+      "spec_declaration",
+      "evidence_declaration",
+      "evidence_mode",
+      "semantic_shape"
+    ],
+    "evidence_modes": [
+      "proves",
+      "refutes"
+    ],
+    "semantic_shapes": [
+      "plain"
+    ],
+    "shape_policy": "Only plain exact-proposition contracts are currently enforced. Do not record a specialized runtime, preprocessing, or refinement shape until the audit implements its structural check.",
+    "source_defect_routing": "Every repaired_in_lean source-proof defect must be linked from a successfully checked contract item through source_defect_ids."
+  },
+  "items": {
+    "assumption1AugmentationFoothold": {
+      "statement": "For unfamiliar languages with skill s, gamma s minus r_C is weakly nonpositive. For familiar languages with skill s-bar, gamma s-bar minus r_C is strictly positive.",
+      "source_item": "Assumption 1 (Augmentation requires a foothold)",
+      "source_kind": "assumption",
+      "source_location": "PDF p. 12, Section 4.1, Assumption 1",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned and inventoried; represented by visible threshold premises in Proposition 2",
+      "claim_bearing": true,
+      "spec_lean_declarations": [
+        "activationBandForUnfamiliarLanguagesSpec"
+      ],
+      "proof_lean_declarations": [
+        "activationBandForUnfamiliarLanguages"
+      ]
+    },
+    "assumption2VerificationTechnology": {
+      "statement": "Verification costs and residual error are weakly lower for stronger developers, more familiar languages, and more capable agents.",
+      "source_item": "Assumption 2 (Verification technology)",
+      "source_kind": "assumption",
+      "source_location": "PDF p. 12, Section 4.1, Assumption 2",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned and inventoried; its monotonic consequence is a visible premise in Proposition 4",
+      "claim_bearing": true,
+      "spec_lean_declarations": [
+        "specialistAndAbilityHeterogeneitySpec"
+      ],
+      "proof_lean_declarations": [
+        "specialistAndAbilityHeterogeneity"
+      ]
+    },
+    "assumption3ComparableCandidates": {
+      "statement": "Conditional on developer characteristics, all unfamiliar languages have the same nonnegative per-language activation increment, increasing in ability when Assumption 2 lowers delegation thresholds with ability.",
+      "source_item": "Assumption 3 (Comparable unfamiliar-language candidates)",
+      "source_kind": "assumption",
+      "source_location": "PDF p. 60, Appendix A.5, Assumption 3",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned and inventoried; equality and monotonicity are visible premises in Proposition 4",
+      "claim_bearing": true,
+      "spec_lean_declarations": [
+        "specialistAndAbilityHeterogeneitySpec"
+      ],
+      "proof_lean_declarations": [
+        "specialistAndAbilityHeterogeneity"
+      ]
+    },
+    "frontierExpansion": {
+      "statement": "For every developer, language, date, and opportunity realization, the Generation-2 activation indicator is weakly greater than the Generation-1 activation indicator; hence the Generation-2 language count is weakly greater path by path.",
+      "source_item": "Proposition 1 (Frontier expansion)",
+      "source_kind": "proposition",
+      "source_location": "PDF p. 13, Section 4.2, Proposition 1",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "frontierExpansionSpec"
+      ],
+      "proof_lean_declarations": [
+        "frontierExpansion"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "frontierExpansionSpec",
+        "evidence_declaration": "frontierExpansion",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "activationBandForUnfamiliarLanguages": {
+      "statement": "Consider an unfamiliar language satisfying Assumption 1. If B_i,k,t is strictly positive, then the Generation-2 indicator minus the Generation-1 indicator equals the indicator that the opportunity lies between the delegation threshold T_D (inclusive) and solo threshold T_S (exclusive). If the conditional opportunity CDF is continuous, the probability that delegation activates the language is F(T_S) minus F(T_D), and expected language-count expansion is the sum of these differences and is weakly nonnegative.",
+      "source_item": "Proposition 2 (Activation band for unfamiliar languages)",
+      "source_kind": "proposition",
+      "source_location": "PDF pp. 13-14, Section 4.2, Proposition 2, Equations (8)-(9)",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "activationBandForUnfamiliarLanguagesSpec"
+      ],
+      "proof_lean_declarations": [
+        "activationBandForUnfamiliarLanguages"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "activationBandForUnfamiliarLanguagesSpec",
+        "evidence_declaration": "activationBandForUnfamiliarLanguages",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "dynamicCumulativeLanguageEffectCorrected": {
+      "statement": "For an initially unfamiliar language, let p^g_i,k be the per-period first-use hazard under generation g. If p^2_i,k is weakly greater than p^1_i,k, the expected cumulative-language effect at event-time horizon s is the sum over initially unfamiliar languages of (1-p^1_i,k)^(s+1) minus (1-p^2_i,k)^(s+1), which is weakly nonnegative. In the closed-frontier benchmark p^1_i,k=0<p^2_i,k it is strictly increasing and concave over the observed horizon.",
+      "source_item": "Proposition 3 (Dynamic cumulative-language effect)",
+      "source_kind": "proposition",
+      "source_location": "PDF p. 15, Section 4.3, Proposition 3, Equation (10), with proof on PDF pp. 61-62",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "dynamicCumulativeLanguageEffectCorrectedSpec"
+      ],
+      "proof_lean_declarations": [
+        "dynamicCumulativeLanguageEffectCorrected"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "dynamicCumulativeLanguageEffectCorrectedSpec",
+        "evidence_declaration": "dynamicCumulativeLanguageEffectCorrected",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "specialistAndAbilityHeterogeneity": {
+      "statement": "Under Assumption 3, expected expansion into initially unfamiliar languages equals the stock of unfamiliar-language candidates times the common activation increment. It is increasing in the stock of unfamiliar-language candidates and in general ability. The largest extensive-margin gains accrue to high-ability specialists.",
+      "source_item": "Proposition 4 (Specialist and ability heterogeneity)",
+      "source_kind": "proposition",
+      "source_location": "PDF pp. 60-61, Appendix A.5, Proposition 4, Equations (22)-(23)",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "specialistAndAbilityHeterogeneitySpec"
+      ],
+      "proof_lean_declarations": [
+        "specialistAndAbilityHeterogeneity"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "specialistAndAbilityHeterogeneitySpec",
+        "evidence_declaration": "specialistAndAbilityHeterogeneity",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    },
+    "repositoryExpansion": {
+      "statement": "Suppose each repository requires at least one programming language and carries an entry cost that is weakly decreasing when the developer can activate that language. If agentic delegation weakly expands the active-language set, then the expected number of repositories the developer can contribute to weakly increases. It increases strictly when some repositories require languages in the delegation activation band.",
+      "source_item": "Proposition 5 (Repository expansion)",
+      "source_kind": "proposition",
+      "source_location": "PDF p. 63, Appendix A.8, Proposition 5",
+      "source_url": "https://arxiv.org/abs/2605.25438v2",
+      "source_status": "pinned statement-spec transcription; independent source audit pending",
+      "spec_lean_declarations": [
+        "repositoryExpansionSpec"
+      ],
+      "proof_lean_declarations": [
+        "repositoryExpansion"
+      ],
+      "semantic_contract_template": {
+        "spec_declaration": "repositoryExpansionSpec",
+        "evidence_declaration": "repositoryExpansion",
+        "evidence_mode": "proves",
+        "semantic_shape": "plain"
+      }
+    }
+  }
+}

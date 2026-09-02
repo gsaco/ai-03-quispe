@@ -262,3 +262,107 @@ then commit and push.
 The shared ChatGPT conversation link was added at the top of `prompts.md`, and
 the latest request was added to the raw conversation record. The complete
 pending repository update was verified, committed, and pushed to `branch1`.
+
+---
+
+## Prompt 11 — User
+
+```kotlin
+Please formalize https://arxiv.org/abs/2605.25438v2 using the
+paper-formalization skill and workflow in this repository.
+Use QX26AgenticDelegation as the paper folder.
+```
+
+When the EconCSLib workflow finishes, locate the generated
+`papers/QX26AgenticDelegation/` folder. Copy and paste **that entire folder
+exactly as generated** into your weekly repository and name the copied folder
+`lean/`. After copying, stage it with ordinary Git commands such as
+`git add lean/` and respect the generated `.gitignore`. **Do not use
+`git add -f`** to publish ignored paper PDFs, TeX/source archives, build caches,
+or private review traces. The complete folder structure is required; ignored
+local source bytes are not.
+
+- **EconCSLib workflow:** https://gargnikhil.com/EconCSLib/
+- **Worked Lean example for this paper:**
+  https://github.com/alexanderquispe/QX26AgenticDelegation
+
+The worked example shows source pinning, theorem inventory, source-facing
+`Spec` declarations, proof files, audits, a dependency graph, and an honest
+partial-formalization report. Use it to understand the expected workflow and
+file roles.
+
+Before copying the generated folder, run the paper-scoped check from the
+EconCSLib root:
+
+`python3 scripts/paper_contribution.py check QX26AgenticDelegation --fast`
+
+Record the result in your repository. A failed or partial result must still be
+submitted exactly as generated, together with an explanation of the precise
+blocker.
+
+**Do not submit a copy of the worked example.**
+
+The presentation
+
+Prepare for a **20-minute presentation**. The title slide must contain your
+repository link. The presentation must cover:
+
+1. the paper and the agent's problem;
+2. the main result with **all** its conditions;
+3. what you did analytically and computationally;
+4. your Lean formalization, including the required Lean slide described below;
+   and
+5. where you did not believe the AI, with the hand derivation on screen and
+   your verdict.
+
+#### Required Lean slide
+
+Include **at least one dedicated slide** about the part of the Lean code or
+proof that you found most interesting. The slide must present the material in
+this order:
+
+1. show the original mathematical equation, proposition, or claim in readable
+   LaTeX;
+2. show the corresponding Lean statement and the most relevant proof fragment;
+   and
+3. explain in your own words how the mathematical objects, assumptions, and
+   conclusion are represented, and what Lean verifies.
+
+Do not display Lean code as decoration. You must be able to identify the
+theorem or `Spec`, explain at least one nontrivial line or proof step, and say
+whether Lean verifies the source claim exactly or only after adding assumptions
+or changing the domain. Also report the relevant build/check result.
+
+The ideal progression is **paper equations → Lean translation → Lean-checked
+proof → your interpretation**. A screenshot alone is not sufficient; typeset
+or clearly display a short, readable code excerpt and explain it.
+
+## Answer 11 — Assistant
+
+The paper was formalized from the pinned arXiv v2 source as
+`QX26AgenticDelegation`; the worked example was not copied. The generated paper
+folder contains five source-facing proposition targets, proof endpoints,
+assumptions, audits, a dependency graph, and an honest partial-formalization
+report. The full Lean build passed, and the required fast paper-scoped check
+finished with exit code zero. Its command and output are recorded in
+`formalization-check.md`.
+
+The generated folder was copied exactly into `lean/` and staged with ordinary
+Git commands while respecting its `.gitignore`. Ignored source PDFs, extracted
+source text, build products, and private review bytes were not forced into the
+index.
+
+Lean found a substantive boundary problem in Proposition 3. The paper's strict
+cumulative-growth clause includes the endpoint where the first-use hazard is
+one, but at that endpoint the gap jumps immediately and is flat afterward. The
+formalization proves the corrected result under the additional strict upper
+bound and separately proves the endpoint counterexample. The folder remains
+labelled partially formalized because the probability statement uses an
+order-theoretic CDF abstraction, the empirical design is outside Lean's scope,
+and the complete semantic-audit closeout was not performed.
+
+The main `presentation.tex` and `presentation.pdf` are now a polished 28-slide,
+20-minute deck. They include the Quispe--Xu versus Aouad--Lykouris--Zhong
+modeling comparison, both analytical pressure tests, the zero-effect
+simulation, the required equation-to-Lean proof slide, the build/check result,
+and the original handwritten derivation with the final verdict.

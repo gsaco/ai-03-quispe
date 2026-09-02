@@ -1,0 +1,77 @@
+\documentclass[landscape]{article}
+\usepackage[paperwidth=18in,paperheight=10in,margin=0.25in]{geometry}
+\usepackage{tikz}
+\pagestyle{empty}
+\input{../../../docs/tikz/dag_preamble.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm,every node/.append style={outer sep=4pt}]
+
+\dagPaperMetadata
+  {Agentic Delegation and the Language Frontier of Software Developers}
+  {Alexander Quispe and Kevin Xu}
+  {arXiv v2}
+  {2026}
+  {https://arxiv.org/abs/2605.25438v2}
+
+\dagPaperLegendRightOfMetadata{
+  \node[dag_result,dag_template_legend] (legClosed) at (0,0)
+    {Lean-closed\\paper result};
+  \node[dag_partial,dag_template_legend] (legPartial) at (5.2,0)
+    {Lean-closed\\with scope boundary};
+  \node[dag_model,dag_template_legend] (legAssumption) at (10.4,0)
+    {paper\\assumption};
+}
+\daglegend{(legClosed)(legPartial)(legAssumption)}{Legend}
+
+\begin{dagPaperBody}
+\node[dag_model] (A1) at (0,0) {
+  \textbf{Assumption 1}\\
+  Augmentation requires a foothold
+};
+\node[dag_model] (A2) at (7.5,0) {
+  \textbf{Assumption 2}\\
+  Verification technology
+};
+\node[dag_model] (A3) at (15,0) {
+  \textbf{Assumption 3}\\
+  Comparable unfamiliar candidates
+};
+
+\node[dag_result] (P1) at (0,-3.5) {
+  \textbf{Proposition 1}\\
+  Frontier expansion\\
+  \texttt{frontierExpansion}
+};
+\node[dag_partial] (P2) at (7.5,-3.5) {
+  \textbf{Proposition 2}\\
+  Activation band\\
+  CDF represented order-theoretically
+};
+\node[dag_result] (P4) at (15,-3.5) {
+  \textbf{Proposition 4}\\
+  Specialist and ability heterogeneity\\
+  \texttt{specialistAndAbility}\\
+  \texttt{Heterogeneity}
+};
+\node[dag_result] (P5) at (0,-7.0) {
+  \textbf{Proposition 5}\\
+  Repository expansion\\
+  \texttt{repositoryExpansion}
+};
+\node[dag_partial] (P3) at (7.5,-7.0) {
+  \textbf{Proposition 3}\\
+  Cumulative-language effect\\
+  corrected with $p_2<1$
+};
+
+\draw[dag_arrow] (A1) -- (P2);
+\draw[dag_arrow] (A2) -- (P2);
+\draw[dag_arrow] (A2) -- (P4);
+\draw[dag_arrow] (A3) -- (P4);
+\draw[dag_arrow] (P1) -- (P5);
+\draw[dag_dashed_arrow] (P2) -- (P3);
+\draw[dag_dashed_arrow] (P2) -- (P5);
+\end{dagPaperBody}
+\end{tikzpicture}
+\end{document}
