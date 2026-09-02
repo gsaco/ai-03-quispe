@@ -25,11 +25,11 @@
   \vspace{0.48cm}
   {\normalsize\bfseries Gabriel Saco\par}
   \vspace{0.06cm}
-  {\normalsize September 1, 2026\par}
+  {\normalsize September 2, 2026\par}
   \vspace{0.18cm}
   {\small Universidad del Pac\'ifico\par}
   \vspace{0.20cm}
-  {\small\color{QXMuted}Extended presentation of Quispe \& Xu (2026) · arXiv:2605.25438\par}
+  {\small\color{QXMuted}Extended presentation of Quispe \& Xu (2026) · arXiv:2605.25438v2\par}
   \vspace{0.10cm}
   {\small\href{https://github.com/gsaco/ai-03-quispe/tree/branch1}{\color{QXNavy}\ttfamily github.com/gsaco/ai-03-quispe/tree/branch1}\par}
   \vfill
@@ -682,6 +682,112 @@
 \end{frame}
 
 % 27
+\begin{frame}[t]{Lean formalization: what is inside the proof boundary}
+  \vspace{0.16cm}
+  \qxblueblock{Result at a glance}{%
+    \small Three numbered assumptions and five propositions were inventoried.
+    All five paper-facing proof endpoints compile without \texttt{sorry},
+    \texttt{admit}, local axioms, or \texttt{native\_decide}; the honest status
+    is still \alert{partially formalized} because source fidelity and proof
+    completion are different questions.
+  }
+
+  \vspace{0.18cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \qxredblock{Four-layer architecture}{%
+        \small
+        \begin{tikzpicture}[
+          node distance=.30cm,
+          box/.style={draw=QXDivider,rounded corners,minimum height=.60cm,
+            text width=4.90cm,align=left,inner xsep=.14cm},
+          arrow/.style={->,very thick,QXNavy}
+        ]
+          \node[box,fill=QXBlueBody] (spec) {\textbf{PaperInterface.lean} · transparent source-facing \texttt{Spec}s};
+          \node[box,fill=QXRedBody,below=of spec] (endpoint) {\textbf{ProofInterface.lean} · exact-type proof endpoints};
+          \node[box,fill=QXBlueBody,below=of endpoint] (impl) {\textbf{MainTheorems.lean} · lemmas, case splits, finite sums};
+          \node[box,fill=QXRedBody,below=of impl] (audit) {\textbf{audit/ + status.json} · source match, defects, scope};
+          \draw[arrow] (spec)--(endpoint);
+          \draw[arrow] (endpoint)--(impl);
+          \draw[arrow] (impl)--(audit);
+        \end{tikzpicture}
+      }
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \qxblueblock{Five checked endpoints}{%
+        \footnotesize
+        \begin{enumerate}\itemsep0.06cm
+          \item menu and frontier expansion;
+          \item unfamiliar-language activation band;
+          \item corrected cumulative dynamics;
+          \item specialist and ability heterogeneity;
+          \item repository expansion.
+        \end{enumerate}
+      }
+      \vspace{0.08cm}
+      \qxredblock{Assumptions stay visible}{%
+        \footnotesize \texttt{Assumptions.lean} contains no paper-local
+        postulates. Economic restrictions appear as theorem premises, so Lean
+        verifies implications rather than declaring the assumptions true.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 28
+\begin{frame}[t]{Lean focus I: the activation band is an exhaustive case split}
+  \setlength{\abovedisplayskip}{0.16em}
+  \setlength{\belowdisplayskip}{0.16em}
+  \vspace{0.06cm}
+  \qxblueblock{1 · Original mathematical claim}{%
+    \small Under the no-foothold condition and $T^D<T^S$,
+    \[
+      Z^2-Z^1=\mathbb I\{T^D\le\omega<T^S\},
+      \qquad
+      \Pr(Z^2-Z^1=1)=F(T^S)-F(T^D)\ge0.
+    \]
+  }
+
+  \vspace{0.08cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.55\textwidth}
+      \qxredblock{2 · Lean statement and decisive proof fragment}{%
+        {\fontsize{6.35}{7.35}\selectfont\ttfamily
+        theorem activationBandIndicator\par
+        \ \ (TD TS opportunity : Real)\par
+        \ \ (hthreshold : TD < TS) :\par
+        \ \ (if TD <= opportunity then 1 else 0) -\par
+        \ \ (if TS <= opportunity then 1 else 0) =\par
+        \ \ if TD <= opportunity /\textbackslash\ opportunity < TS\par
+        \ \ then 1 else 0 := by\par
+        \quad by\_cases hD : TD <= opportunity\par
+        \quad . by\_cases hS : TS <= opportunity\par
+        \quad . . simp [hD, hS, not\_lt\_of\_ge hS]\par
+        \quad . . simp [hD, hS, lt\_of\_not\_ge hS]\par
+        \quad . have hS : not (TS <= opportunity) := by\par
+        \qquad exact fun hs => hD ((le\_of\_lt hthreshold).trans hs)\par}
+      }
+    \end{column}
+    \begin{column}{0.43\textwidth}
+      \qxblueblock{3 · Representation and proof idea}{%
+        \footnotesize Thresholds and opportunity value are real numbers;
+        activation indicators are zero-one natural numbers. The proof splits
+        on whether delegation and solo production activate. The strict threshold
+        order eliminates the impossible case in which solo activates but
+        delegation does not.
+      }
+      \vspace{0.08cm}
+      \qxredblock{What Lean verifies}{%
+        \footnotesize \texttt{activationBandForUnfamiliarLanguagesSpec}
+        verifies the indicator identity and nonnegative summed CDF differences.
+        It does not construct the conditional probability measure; continuity
+        is recorded but monotonicity does the order-theoretic work.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 29
 \begin{frame}[t]{Lean focus: Proposition 3 needs an interior hazard}
   \setlength{\abovedisplayskip}{0.18em}
   \setlength{\belowdisplayskip}{0.18em}
@@ -734,7 +840,7 @@
   \end{columns}
 \end{frame}
 
-% 28
+% 30
 \begin{frame}[t]{Where I did not believe the AI: hand derivation and verdict}
   \vspace{0.06cm}
   \begin{columns}[T,onlytextwidth]
