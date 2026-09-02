@@ -2,7 +2,7 @@
 \providecommand\IfDocumentMetadataT[1]{}
 \providecommand\IfDocumentMetadataTF[2]{#2}
 \documentclass[aspectratio=169,9pt]{beamer}
-\newcommand{\qxdecklabel}{Quispe \& Xu (2026) · extended technical deck}
+\newcommand{\qxdecklabel}{Quispe \& Xu (2026) · 20-minute paper and formalization audit}
 \input{../assets/quispe-beamer.sty}
 \title{Agentic Delegation and the Language Frontier of Software Developers: A Model and Evidence from Claude Code on GitHub}
 \author{Gabriel Saco}
@@ -19,13 +19,13 @@
     of Software Developers: A Model and Evidence\par
     from Claude Code on GitHub\par}
   \vspace{0.20cm}
-  {\fontsize{11.5}{14}\selectfont Model, evidence, and an identification audit\par}
+  {\fontsize{11.5}{14}\selectfont Model, evidence, formalization, and an identification audit\par}
   \vspace{0.32cm}
   {\color{QXRed}\rule{\linewidth}{0.55pt}}
   \vspace{0.48cm}
   {\normalsize\bfseries Gabriel Saco\par}
   \vspace{0.06cm}
-  {\normalsize August 29, 2026\par}
+  {\normalsize September 1, 2026\par}
   \vspace{0.18cm}
   {\small Universidad del Pac\'ifico\par}
   \vspace{0.20cm}
@@ -33,7 +33,7 @@
   \vspace{0.10cm}
   {\small\href{https://github.com/gsaco/ai-03-quispe/tree/branch1}{\color{QXNavy}\ttfamily github.com/gsaco/ai-03-quispe/tree/branch1}\par}
   \vfill
-  {\scriptsize\color{QXMuted}AI Economic Modeling\hfill 26-slide technical companion\par}
+  {\scriptsize\color{QXMuted}AI Economic Modeling\hfill 20-minute presentation\par}
 \end{frame}
 
 % 2
@@ -89,34 +89,40 @@
 \end{frame}
 
 % 4
-\begin{frame}[t]{From conversational assistance to delegation}
-  \vspace{0.42cm}
+\begin{frame}[t]{One modelling choice separates frontier expansion from deskilling}
+  \vspace{0.22cm}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.47\textwidth}
-      \qxblueblock{Generation 1: conversation}{%
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Quispe--Xu: skill is fixed}{%
         \small
-        \begin{itemize}\itemsep0.07cm
-          \item human remains the executor;
-          \item suggestions complement language skill;
-          \item interaction is turn-by-turn;
-          \item unfamiliar languages may lack a usable foothold.
-        \end{itemize}
+        The agent adds delegated execution to the production menu:
+        \[
+          \{S,C\}\longrightarrow\{S,C,D\}.
+        \]
+        Language skill is a state, not a choice. Substitution away from human
+        execution can therefore expand the set of feasible languages without
+        changing the developer's own skill stock.
       }
     \end{column}
-    \begin{column}{0.47\textwidth}
-      \qxredblock{Generation 2: agentic delegation}{%
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Aouad--Lykouris--Zhong: skill is endogenous}{%
         \small
-        \begin{itemize}\itemsep0.07cm
-          \item tool performs multi-step execution;
-          \item human specifies and verifies;
-          \item capability can substitute for language skill;
-          \item residual errors create risk and review costs.
-        \end{itemize}
+        AI, effort, and skill are substitutable inputs. More assistance lowers
+        optimal human effort; current effort then determines future skill:
+        \[
+          a_t\uparrow\Rightarrow e_t^*\downarrow,
+          \qquad s_{t+1}=G(s_t,e_t^*).
+        \]
+        The feedback can shift the steady-state skill distribution downward
+        and generate a long-run productivity paradox.
       }
     \end{column}
   \end{columns}
-  \vspace{0.44cm}
-  \qxblueblock{Empirical event}{\small Claude Code's public release creates a setting in which delegated production can be traced through GitHub commit metadata.}
+  \vspace{0.20cm}
+  \qxtakeaway{Substitutability is common to both papers. The decisive choice is whether reduced human execution feeds back into future skill.}
+
+  \vspace{0.10cm}
+  {\scriptsize\color{QXMuted}Aouad, Lykouris \& Zhong (2026), \emph{Human-AI Productivity Paradoxes: Modeling the Interplay of Skill, Effort, and AI Assistance}, arXiv:2605.11350.\par}
 \end{frame}
 
 % 5
@@ -604,28 +610,38 @@
 \end{frame}
 
 % 25
-\begin{frame}[t]{Pressure test I: the activation band is generic}
-  \vspace{0.34cm}
-  \qxredblock{Same comparative static without an agent}{%
+\begin{frame}[t]{What I did: two questions, two counterexamples, one formal audit}
+  \vspace{0.20cm}
+  \qxredblock{Question 1 · Does the entry-threshold mechanism require an agent? \alert{No.}}{%
     \small Let any intervention lower the old entry threshold by $\tau>0$. Then
     \[
       T^G=T^1-\tau,
       \qquad
       Z^G-Z^1=\mathrm{I}(T^1-\tau\le\omega<T^1).
     \]
-    This is exactly an activation band.
+    Better libraries, an expert collaborator, or employer support can produce
+    exactly the same activation band.
   }
-  \vspace{0.30cm}
+  \vspace{0.16cm}
   \begin{columns}[T,onlytextwidth]
-    \begin{column}{0.47\textwidth}
-      \qxblueblock{Could generate it}{\small Better libraries, an expert collaborator, reusable templates, employer support, or a conventional productivity improvement.}
+    \begin{column}{0.48\textwidth}
+      \qxblueblock{Where agent specificity enters}{%
+        \small It comes from the mode assumptions: conversation has no foothold
+        in unfamiliar languages, while delegated execution remains valuable
+        after specification, verification, compute, and residual-risk costs.
+        The threshold theorem itself is generic.
+      }
     \end{column}
-    \begin{column}{0.47\textwidth}
-      \qxredblock{Agent-specific content}{\small The no-foothold and delegation-cost assumptions explain why the new threshold should belong to an agent. The band itself does not.}
+    \begin{column}{0.48\textwidth}
+      \qxredblock{Question 2 · Does the design identify expansion? \alert{No.}}{%
+        \small I construct a project shock that arrives at adoption, directly
+        raises language breadth, and triggers Claude use. It yields flat leads
+        and a positive event-time jump even when Claude's true effect is zero.
+      }
     \end{column}
   \end{columns}
-  \vspace{0.28cm}
-  \qxtakeaway{The model organizes a plausible agent mechanism, but the central threshold theorem is not a uniqueness theorem.}
+  \vspace{0.16cm}
+  \qxtakeaway{Analytical algebra, a zero-effect simulation, and five Lean proposition targets all point to a narrow verdict: plausible mechanism, incomplete identification.}
 \end{frame}
 
 % 26
@@ -657,8 +673,98 @@
       }
       \vspace{0.22cm}
       \qxredblock{Repository audit}{%
-        \small Lean checks the threshold and selection algebra; the simulation produces an adoption jump with a true Claude effect of zero.
+        \small Lean checks the threshold and selection algebra; with the true
+        Claude effect set to zero, the seeded simulation still estimates a
+        $+1.83$ adoption-month jump.
       }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 27
+\begin{frame}[t]{Lean focus: Proposition 3 needs an interior hazard}
+  \setlength{\abovedisplayskip}{0.18em}
+  \setlength{\belowdisplayskip}{0.18em}
+  \vspace{0.08cm}
+  \qxblueblock{1 · Original mathematical claim and corrected domain}{%
+    \small In the closed-frontier benchmark, let
+    \[
+      g_s=1-(1-p)^{s+1}.
+      \qquad
+      g_s<g_{s+1},
+      \quad
+      (g_{s+2}-g_{s+1})<(g_{s+1}-g_s).
+    \]
+    The paper permits $0<p\le1$ for the strict clause; the strict inequalities
+    are valid only on the interior $0<p<1$.
+  }
+
+  \vspace{0.10cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      \qxredblock{2 · Lean statement and proof fragment}{%
+        {\fontsize{6.4}{7.45}\selectfont\ttfamily
+        theorem closedFrontierStrictDynamics\par
+        \ \ (horizon : Nat) (p : Real)\par
+        \ \ (hpPositive : 0 < p) (hpBelowOne : p < 1) :\par
+        \ \ let gap := fun h : Nat => 1 - (1-p)\textasciicircum(h+1)\par
+        \ \ gap horizon < gap (horizon+1) /\textbackslash\par
+        \ \ \ \ gap (horizon+2) - gap (horizon+1) <\par
+        \ \ \ \ gap (horizon+1) - gap horizon := by\par
+        \quad rw [pow\_succ]\par
+        \quad exact mul\_lt\_of\_lt\_one\_right\par
+        \qquad hpowPositive hqBelowOne\par}
+      }
+    \end{column}
+    \begin{column}{0.44\textwidth}
+      \qxblueblock{3 · Representation and interpretation}{%
+        \footnotesize Horizon is a natural number; the hazard and gap are real
+        numbers; positivity and the strict upper bound are explicit premises.
+        Rewriting a power as the previous power times $q=1-p$ shows that
+        multiplying a positive survivor term by $0<q<1$ strictly shrinks it.
+      }
+      \vspace{0.08cm}
+      \qxredblock{What Lean verifies}{%
+        \footnotesize It verifies the corrected interior theorem exactly, and
+        \texttt{closedFrontierHazardOneNotStrict} proves the printed strict
+        claim fails at $p=1$. Full build and the required fast paper check both
+        pass; the overall submission remains honestly partial.
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% 28
+\begin{frame}[t]{Where I did not believe the AI: hand derivation and verdict}
+  \vspace{0.06cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.57\textwidth}
+      \centering
+      \fcolorbox{QXDivider}{white}{%
+        \includegraphics[angle=-90,origin=c,width=.92\linewidth,height=5.50cm,keepaspectratio]{../hand/selection-derivation.png}%
+      }
+      \par\vspace{0.04cm}
+      {\scriptsize\color{QXMuted}My derivation: generic threshold equivalence and project-shock selection.\par}
+    \end{column}
+    \begin{column}{0.41\textwidth}
+      \qxredblock{Threshold verdict}{%
+        \small A lower entry threshold does not identify an agent. The agentic
+        interpretation requires the paper's mode-specific assumptions.
+      }
+      \vspace{0.10cm}
+      \qxblueblock{Empirical verdict}{%
+        \small A contemporaneous project shock can jointly cause adoption and
+        language expansion. Flat pre-trends and outcome exclusions do not make
+        voluntary adoption timing exogenous.
+      }
+      \vspace{0.10cm}
+      \qxredblock{Formal verdict}{%
+        \small Lean closes all five proposition targets within their encoded
+        scope, but narrows Proposition 3 to $p<1$ and does not formalize the
+        event-study identification argument.
+      }
+      \vspace{0.10cm}
+      \qxtakeaway{Mechanism-consistent, not mechanism-identified.}
     \end{column}
   \end{columns}
 \end{frame}

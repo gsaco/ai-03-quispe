@@ -4,9 +4,9 @@
 
 <p align="center">
   <a href="https://arxiv.org/abs/2605.25438"><img alt="arXiv paper" src="https://img.shields.io/badge/Paper-arXiv%3A2605.25438-0C2852?style=for-the-badge"></a>
-  <a href="presentation.pdf"><img alt="Five-minute deck" src="https://img.shields.io/badge/5--Minute%20Deck-PDF-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
-  <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended%20Deck-26%20Slides-0C2852?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
-  <a href="lean/README.md"><img alt="Lean verification" src="https://img.shields.io/badge/Lean-Machine%20Checked-3B5526?style=for-the-badge"></a>
+  <a href="presentation.pdf"><img alt="Twenty-minute deck" src="https://img.shields.io/badge/20--Minute%20Deck-28%20Slides-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
+  <a href="extra/presentation-long.pdf"><img alt="Extended deck mirror" src="https://img.shields.io/badge/Extended%20Deck-28%20Slides-0C2852?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
+  <a href="lean/README.md"><img alt="Lean formalization" src="https://img.shields.io/badge/Lean-Partially%20Formalized-3B5526?style=for-the-badge"></a>
 </p>
 
 <p align="center">
@@ -104,25 +104,62 @@ defensible verdict is therefore narrower: language-portfolio expansion
 coincides with Claude Code adoption and is consistent with delegation, but the
 design does not identify delegation as the cause.
 
-The reproducible [`sim.py`](sim.py) simulation creates a positive adoption-time
-jump while setting Claude's true effect to zero. The
-[Lean appendix](lean/README.md) machine-checks the threshold results and the
-selection decomposition.
+The reproducible [`sim.py`](sim.py) simulation creates an estimated 1.83
+adoption-month jump while setting Claude's true effect to zero.
+
+## Relationship to the deskilling result
+
+Aouad, Lykouris, and Zhong's *Human-AI Productivity Paradoxes: Modeling the
+Interplay of Skill, Effort, and AI Assistance* also treats AI as a substitute
+for human execution, but it allows lower human effort today to reduce future
+skill. Quispe and Xu instead hold language skill fixed over the production
+choice and ask whether delegation expands the feasible menu.
+
+That single modeling choice explains the apparently opposite conclusions. A
+fixed skill stock permits production-frontier expansion without learning;
+effort-dependent skill creates a feedback from substitution to deskilling. The
+comparison is developed on slide 4 of the presentation.
+
+## Lean formalization
+
+The complete generated EconCSLib paper folder is copied into
+[`lean/`](lean/README.md). It was produced for `QX26AgenticDelegation` from the
+pinned arXiv v2 source, not copied from the worked example. The generated
+folder contains the paper-facing specifications, proof endpoints, assumptions,
+audits, dependency graph, status record, and final validation report. Its
+generated ignore rules keep paper PDFs, extracted source text, build caches,
+and private review traces out of Git.
+
+Five proposition targets have Lean proofs within their encoded scope. The most
+important finding is a boundary error in Proposition 3: the paper's strict
+growth claim fails when the first-use hazard is one, because the cumulative gap
+jumps immediately and is flat afterward. The corrected Lean theorem requires
+the hazard to be strictly below one, and a separate theorem verifies the
+endpoint failure.
+
+The submission is therefore labelled **partially formalized**, not fully
+formalized. The activation-probability result uses an order-theoretic
+abstraction of a cumulative distribution function, the empirical event-study
+argument is outside Lean's scope, and the complete EconCSLib semantic-audit
+closeout was not performed. The exact command and successful exit result are
+recorded in [`formalization-check.md`](formalization-check.md); the detailed
+scope report is in
+[`lean/FINAL_VALIDATION_REPORT.md`](lean/FINAL_VALIDATION_REPORT.md).
 
 ## Presentations
 
 | File | Purpose |
 |---|---|
-| [`presentation.pdf`](presentation.pdf) | Required five-minute, five-slide presentation |
-| [`extra/presentation-long.pdf`](extra/presentation-long.pdf) | Extended 26-slide technical presentation |
-| [`presentation.tex`](presentation.tex) | Short-deck Beamer source |
-| [`extra/presentation-long.tex`](extra/presentation-long.tex) | Extended-deck Beamer source |
+| [`presentation.pdf`](presentation.pdf) | Required 20-minute, 28-slide presentation |
+| [`presentation.tex`](presentation.tex) | Main Beamer source |
+| [`extra/presentation-long.pdf`](extra/presentation-long.pdf) | Extended-deck mirror |
+| [`extra/presentation-long.tex`](extra/presentation-long.tex) | Extended-deck source |
 
 ## Handwritten check
 
 The original photograph is stored in `hand/selection-derivation.png` and appears
-on the final slide of the short deck. The repository preserves the uncropped
-file; the Beamer source rotates it only for upright display.
+on the final slide of the 20-minute deck. The repository preserves the
+uncropped file; the Beamer source rotates it only for upright display.
 
 ## Repository structure
 
@@ -130,9 +167,10 @@ file; the Beamer source rotates it only for upright display.
 .
 ├── README.md                         # Question, conditions, evidence, verdict
 ├── prompts.md                        # Raw relevant prompt-answer record
-├── presentation.tex / .pdf          # Required five-slide deck
+├── presentation.tex / .pdf          # Required 20-minute deck
 ├── extra/presentation-long.tex / .pdf
-├── lean/                             # Lean 4 machine-checked audit
+├── lean/                             # Exact generated EconCSLib paper folder
+├── formalization-check.md            # Required paper-scoped check result
 ├── assets/                           # Banner and shared Beamer style
 ├── hand/                             # Original derivation photo goes here
 ├── figures/selection-counterexample.pdf
@@ -147,8 +185,11 @@ python3 -m pip install -r requirements.txt
 python3 sim.py
 lualatex presentation.tex
 cd extra && lualatex presentation-long.tex
-cd ../lean && lake build --wfail
 ```
+
+To reproduce the Lean result, use an EconCSLib checkout, place this repository's
+`lean/` folder at `papers/QX26AgenticDelegation/`, and run the paper build and
+paper-scoped check documented in [`formalization-check.md`](formalization-check.md).
 
 ## Citation
 

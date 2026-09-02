@@ -1,0 +1,126 @@
+{
+  "schema": 1,
+  "paper": "QX26AgenticDelegation",
+  "acceptance_credential": false,
+  "future_paper_intake_only": true,
+  "state": "draft",
+  "inventory_scope": "complete named theoretical source surface",
+  "inventory_complete": false,
+  "source_item_identity": "source-location+normalized-statement-sha256-v1",
+  "source_artifact_path": "papers/QX26AgenticDelegation/source-audited.pdf",
+  "source_artifact_sha256": "cddc048711c43022d5fd01b995bfb1114c728c8c879b809b5fdc354a391d3c35",
+  "source_version": "arXiv v2, 2026-07-07",
+  "source_text_artifact": {
+    "schema": 1,
+    "path": "papers/QX26AgenticDelegation/source.txt",
+    "sha256": "57092bea554d7047cbf45c3437521dd9809b632f5fd2c710c2fd0e6d783b1bb5",
+    "normalization": "utf8-lf-v1",
+    "extraction": {
+      "schema": 1,
+      "source_artifact_path": "papers/QX26AgenticDelegation/source-audited.pdf",
+      "source_artifact_sha256": "cddc048711c43022d5fd01b995bfb1114c728c8c879b809b5fdc354a391d3c35",
+      "tool": "pdftotext",
+      "options": []
+    }
+  },
+  "items": [
+    {
+      "source_item": "Proposition 1 (Frontier expansion)",
+      "source_location": "PDF p. 13, Section 4.2, Proposition 1",
+      "source_statement_sha256": "04565fe401bdc31d36ad163d87bb72d9d15fce70c22b3a7fd00aee5fab1e874a",
+      "source_kind": "proposition",
+      "spec_declaration": "frontierExpansionSpec",
+      "proof_declaration": "frontierExpansion",
+      "dependency_order": 1,
+      "depends_on_source_items": [],
+      "owner": "unassigned",
+      "source_atoms": [],
+      "acceptance_conditions": [
+        "all exact source atoms are byte-pinned and semantically complete",
+        "the transparent Spec is equivalent to the full source target",
+        "every visible premise has source or checked derivation provenance",
+        "the proof closes without paper-local placeholders"
+      ]
+    },
+    {
+      "source_item": "Proposition 2 (Activation band for unfamiliar languages)",
+      "source_location": "PDF pp. 13-14, Section 4.2, Proposition 2, Equations (8)-(9)",
+      "source_statement_sha256": "4cd00fa6f53deadb9157ebd3d350e4e3307935605a56d6b1ea23abee5e215525",
+      "source_kind": "proposition",
+      "spec_declaration": "activationBandForUnfamiliarLanguagesSpec",
+      "proof_declaration": "activationBandForUnfamiliarLanguages",
+      "dependency_order": 2,
+      "depends_on_source_items": [],
+      "owner": "unassigned",
+      "source_atoms": [],
+      "acceptance_conditions": [
+        "all exact source atoms are byte-pinned and semantically complete",
+        "the transparent Spec is equivalent to the full source target",
+        "every visible premise has source or checked derivation provenance",
+        "the proof closes without paper-local placeholders"
+      ]
+    },
+    {
+      "source_item": "Proposition 3 (Dynamic cumulative-language effect)",
+      "source_location": "PDF p. 15, Section 4.3, Proposition 3, Equation (10), with proof on PDF pp. 61-62",
+      "source_statement_sha256": "83bb7850821fac187278e394a5e7ad6641b6920428d2d73dcf2e78f5ba9e3424",
+      "source_kind": "proposition",
+      "spec_declaration": "dynamicCumulativeLanguageEffectCorrectedSpec",
+      "proof_declaration": "dynamicCumulativeLanguageEffectCorrected",
+      "dependency_order": 3,
+      "depends_on_source_items": [],
+      "owner": "unassigned",
+      "source_atoms": [],
+      "acceptance_conditions": [
+        "all exact source atoms are byte-pinned and semantically complete",
+        "the transparent Spec is equivalent to the full source target",
+        "every visible premise has source or checked derivation provenance",
+        "the proof closes without paper-local placeholders"
+      ]
+    },
+    {
+      "source_item": "Proposition 4 (Specialist and ability heterogeneity)",
+      "source_location": "PDF pp. 60-61, Appendix A.5, Proposition 4, Equations (22)-(23)",
+      "source_statement_sha256": "b5f2cb5c1761b7e0a2e5fb79e432e9b78a45887b6eeac3f10b79a6aaa6d61f55",
+      "source_kind": "proposition",
+      "spec_declaration": "specialistAndAbilityHeterogeneitySpec",
+      "proof_declaration": "specialistAndAbilityHeterogeneity",
+      "dependency_order": 4,
+      "depends_on_source_items": [],
+      "owner": "unassigned",
+      "source_atoms": [],
+      "acceptance_conditions": [
+        "all exact source atoms are byte-pinned and semantically complete",
+        "the transparent Spec is equivalent to the full source target",
+        "every visible premise has source or checked derivation provenance",
+        "the proof closes without paper-local placeholders"
+      ]
+    },
+    {
+      "source_item": "Proposition 5 (Repository expansion)",
+      "source_location": "PDF p. 63, Appendix A.8, Proposition 5",
+      "source_statement_sha256": "966555a1a5e6d3606d8480462215aca6a319b03ff137b3b869085681032061c8",
+      "source_kind": "proposition",
+      "spec_declaration": "repositoryExpansionSpec",
+      "proof_declaration": "repositoryExpansion",
+      "dependency_order": 5,
+      "depends_on_source_items": [],
+      "owner": "unassigned",
+      "source_atoms": [],
+      "acceptance_conditions": [
+        "all exact source atoms are byte-pinned and semantically complete",
+        "the transparent Spec is equivalent to the full source target",
+        "every visible premise has source or checked derivation provenance",
+        "the proof closes without paper-local placeholders"
+      ]
+    }
+  ],
+  "seal_requirements": {
+    "state": "sealed",
+    "inventory_complete": true,
+    "every_item_has_owner": true,
+    "dependency_order_is_total": true,
+    "every_source_atom_has_locator_exact_byte_slice_quote_and_sha256": true,
+    "pdf_atoms_use_pinned_normalized_source_text_receipt": true
+  }
+}

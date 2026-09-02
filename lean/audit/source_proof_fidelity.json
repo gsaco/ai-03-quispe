@@ -1,0 +1,88 @@
+{
+  "schema": 2,
+  "paper": "QX26AgenticDelegation",
+  "source_artifact_path": "papers/QX26AgenticDelegation/source-audited.pdf",
+  "source_artifact_sha256": "cddc048711c43022d5fd01b995bfb1114c728c8c879b809b5fdc354a391d3c35",
+  "review_status": "partial",
+  "reviewed_proof_scopes": [
+    "PDF pp. 59-63, Appendix A.3-A.8"
+  ],
+  "model_conventions": [
+    {
+      "id": "finite-counting-carriers",
+      "source_locator": "PDF pp. 10-15, Sections 4.1-4.3",
+      "classification": "formalization_convention",
+      "formal_meaning": "Languages and repositories are arbitrary finite Lean types; counts are finite sums of zero-one natural-number indicators.",
+      "why_needed": "The source uses finite indexed sums but leaves the carrier implementation implicit.",
+      "checked_scope": "Propositions 1-5"
+    },
+    {
+      "id": "cdf-order-abstraction",
+      "source_locator": "PDF pp. 13-14, Proposition 2, Equations (8)-(9)",
+      "classification": "partial_boundary",
+      "formal_meaning": "The conditional CDF is represented as a continuous monotone real function; the formalization proves nonnegative threshold differences, not a conditional-measure identity.",
+      "why_needed": "A full conditional probability space and CDF construction are outside the selected finite order-theoretic scope.",
+      "checked_scope": "Proposition 2"
+    }
+  ],
+  "checked_proof_steps": [
+    {
+      "id": "prop1-menu-max",
+      "source_locator": "PDF p. 59, Appendix A.3, Equation (21)",
+      "source_step": "The maximum over the expanded menu weakly exceeds the maximum over the old menu, so activation indicators and their sum are weakly larger.",
+      "checked_conclusion": "Pointwise and finite-sum indicator monotonicity.",
+      "scope": "Proposition 1"
+    },
+    {
+      "id": "prop2-band-cases",
+      "source_locator": "PDF p. 60, Appendix A.4",
+      "source_step": "When the delegation threshold is below the solo threshold, the indicators differ exactly on the half-open interval between them.",
+      "checked_conclusion": "Exact natural-number indicator identity and nonnegative summed CDF difference.",
+      "scope": "Proposition 2"
+    },
+    {
+      "id": "prop3-power-order",
+      "source_locator": "PDF pp. 61-62, Appendix A.6, Equations (24)-(27)",
+      "source_step": "Ordered hazards reverse the no-use bases, natural powers preserve the order, and first differences equal p times the surviving at-risk probability.",
+      "checked_conclusion": "Weak nonnegativity on the closed unit interval and strict dynamics on its interior.",
+      "scope": "Proposition 3"
+    },
+    {
+      "id": "prop4-linear-expectation",
+      "source_locator": "PDF pp. 60-61, Appendix A.5, Equations (22)-(23)",
+      "source_step": "A finite sum of a common activation increment equals candidate count times that increment; the product is monotone in nonnegative factors.",
+      "checked_conclusion": "Finite-sum identity and joint monotonicity.",
+      "scope": "Proposition 4"
+    },
+    {
+      "id": "prop5-repository-indicators",
+      "source_locator": "PDF p. 63, Appendix A.8",
+      "source_step": "Weakly lower entry costs weakly increase every repository indicator; a strict band witness makes the sum strictly larger.",
+      "checked_conclusion": "Weak and strict finite repository-count expansion.",
+      "scope": "Proposition 5"
+    }
+  ],
+  "defects": [
+    {
+      "id": "prop3-hazard-one-boundary",
+      "source_locator": "PDF p. 15, Proposition 3; PDF p. 62, Appendix A.6 after Equation (27)",
+      "source_claim": "In the closed-frontier benchmark p1 = 0 < p2, the cumulative effect is strictly increasing and concave over the observed horizon.",
+      "defect_kind": "domain_or_endpoint",
+      "affected_source_locators": [
+        "PDF p. 15, Proposition 3",
+        "PDF p. 62, Appendix A.6"
+      ],
+      "statement_impact": "source_statement",
+      "repair_obligation": "Add p2 < 1 to the strict-growth and strict-concavity clause, or weaken strict inequalities at p2 = 1.",
+      "acceptance_condition": "Prove the corrected interior theorem and prove that strict growth fails at the endpoint p2 = 1.",
+      "resolution": "corrected_source_statement",
+      "resolution_evidence": [
+        "QX26AgenticDelegation.closedFrontierStrictDynamics",
+        "QX26AgenticDelegation.closedFrontierHazardOneNotStrict",
+        "QX26AgenticDelegation.dynamicCumulativeLanguageEffectCorrected"
+      ],
+      "status_impact": "partially_formalized",
+      "status_impact_rationale": "The Lean endpoint is narrower than the printed strict clause because it adds the necessary upper-bound assumption p2 < 1."
+    }
+  ]
+}
